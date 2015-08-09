@@ -28,6 +28,7 @@ class SphereTests: XCTestCase {
         let i = intersection!
         XCTAssertEqualWithAccuracy(i.t, 3.0, accuracy: 0.001)
         XCTAssertTrue(i.point.fuzzyEquals(Vector(x: 0.0, y: 0.0, z: -2.0)))
+        XCTAssertTrue(i.normal.fuzzyEquals(Vector(x: 0.0, y: 0.0, z: 1.0)))
     }
 }
 
