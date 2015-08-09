@@ -9,5 +9,5 @@
 import Foundation
 
 struct Material {
-    let color: Vector
+    let color: Color
 }
