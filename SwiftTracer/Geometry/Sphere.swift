@@ -12,6 +12,7 @@ import Foundation
 struct Sphere {
     let radius: Double
     let center: Vector
+    let material: Material
 }
 
 extension Sphere : Shape {
