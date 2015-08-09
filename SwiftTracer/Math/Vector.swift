@@ -18,6 +18,13 @@ struct Vector : Equatable  {
         return x * other.x + y * other.y + z * other.z
     }
 
+    func cross(other: Vector) -> Vector {
+        let x0 = y * other.z - z * other.y
+        let y0 = z * other.x - x * other.z
+        let z0 = x * other.y - y * other.x
+        return Vector(x:  x0, y: y0, z: z0)
+    }
+
     func length() -> Double {
         return sqrt(dot(self))
     }
