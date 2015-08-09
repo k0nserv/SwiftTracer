@@ -11,6 +11,14 @@
 		D65F16E61B77B5D200866F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E51B77B5D200866F61 /* Assets.xcassets */; };
 		D65F16E91B77B5D200866F61 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E71B77B5D200866F61 /* MainMenu.xib */; };
 		D65F16F41B77B5D200866F61 /* SwiftTracerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F16F31B77B5D200866F61 /* SwiftTracerTests.swift */; };
+		D65F17001B77B69000866F61 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F16FF1B77B69000866F61 /* Sphere.swift */; };
+		D65F17031B77B6B800866F61 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17021B77B6B800866F61 /* Vector.swift */; };
+		D65F17051B77B6EF00866F61 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17041B77B6EF00866F61 /* Shape.swift */; };
+		D65F17081B77B76700866F61 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17071B77B76700866F61 /* Ray.swift */; };
+		D65F170A1B77B78500866F61 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17091B77B78500866F61 /* Material.swift */; };
+		D65F170C1B77B7BD00866F61 /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F170B1B77B7BD00866F61 /* Intersection.swift */; };
+		D65F170F1B77B8BA00866F61 /* SphereTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F170E1B77B8BA00866F61 /* SphereTest.swift */; };
+		D65F17121B77BD3F00866F61 /* VectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17111B77BD3F00866F61 /* VectorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +40,14 @@
 		D65F16EF1B77B5D200866F61 /* SwiftTracerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTracerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F16F31B77B5D200866F61 /* SwiftTracerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTracerTests.swift; sourceTree = "<group>"; };
 		D65F16F51B77B5D200866F61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D65F16FF1B77B69000866F61 /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
+		D65F17021B77B6B800866F61 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		D65F17041B77B6EF00866F61 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		D65F17071B77B76700866F61 /* Ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
+		D65F17091B77B78500866F61 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		D65F170B1B77B7BD00866F61 /* Intersection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersection.swift; sourceTree = "<group>"; };
+		D65F170E1B77B8BA00866F61 /* SphereTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereTest.swift; sourceTree = "<group>"; };
+		D65F17111B77BD3F00866F61 /* VectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +89,9 @@
 		D65F16E21B77B5D200866F61 /* SwiftTracer */ = {
 			isa = PBXGroup;
 			children = (
+				D65F17061B77B75E00866F61 /* Misc */,
+				D65F17011B77B6AE00866F61 /* Math */,
+				D65F16FE1B77B67C00866F61 /* Geometry */,
 				D65F16E31B77B5D200866F61 /* AppDelegate.swift */,
 				D65F16E51B77B5D200866F61 /* Assets.xcassets */,
 				D65F16E71B77B5D200866F61 /* MainMenu.xib */,
@@ -84,10 +103,55 @@
 		D65F16F21B77B5D200866F61 /* SwiftTracerTests */ = {
 			isa = PBXGroup;
 			children = (
+				D65F17101B77BD3200866F61 /* Math */,
+				D65F170D1B77B8AF00866F61 /* Geometry */,
 				D65F16F31B77B5D200866F61 /* SwiftTracerTests.swift */,
 				D65F16F51B77B5D200866F61 /* Info.plist */,
 			);
 			path = SwiftTracerTests;
+			sourceTree = "<group>";
+		};
+		D65F16FE1B77B67C00866F61 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				D65F16FF1B77B69000866F61 /* Sphere.swift */,
+				D65F17041B77B6EF00866F61 /* Shape.swift */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
+		D65F17011B77B6AE00866F61 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				D65F17021B77B6B800866F61 /* Vector.swift */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
+		D65F17061B77B75E00866F61 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				D65F17071B77B76700866F61 /* Ray.swift */,
+				D65F17091B77B78500866F61 /* Material.swift */,
+				D65F170B1B77B7BD00866F61 /* Intersection.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		D65F170D1B77B8AF00866F61 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				D65F170E1B77B8BA00866F61 /* SphereTest.swift */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
+		D65F17101B77BD3200866F61 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				D65F17111B77BD3F00866F61 /* VectorTests.swift */,
+			);
+			path = Math;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65F17001B77B69000866F61 /* Sphere.swift in Sources */,
+				D65F17031B77B6B800866F61 /* Vector.swift in Sources */,
 				D65F16E41B77B5D200866F61 /* AppDelegate.swift in Sources */,
+				D65F17051B77B6EF00866F61 /* Shape.swift in Sources */,
+				D65F170A1B77B78500866F61 /* Material.swift in Sources */,
+				D65F170C1B77B7BD00866F61 /* Intersection.swift in Sources */,
+				D65F17081B77B76700866F61 /* Ray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +267,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65F170F1B77B8BA00866F61 /* SphereTest.swift in Sources */,
 				D65F16F41B77B5D200866F61 /* SwiftTracerTests.swift in Sources */,
+				D65F17121B77BD3F00866F61 /* VectorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
