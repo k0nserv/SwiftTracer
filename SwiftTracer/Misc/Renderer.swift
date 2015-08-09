@@ -38,13 +38,28 @@ struct Renderer {
                 }
 
                 if let hit = closestHit {
-                    result[x].append(hit.shape.material.color)
+                    result[x].append(shade(hit))
                 } else {
                     result[x].append(Color(r: 0.0, g: 0.0, b: 0.0))
                 }
             }
         }
 
+        return result
+    }
+
+    private func shade(intersection: Intersection) -> Color {
+        let material = intersection.shape.material
+        var result = material.color
+        for var light in scene.lights {
+            let lightDirection = (intersection.point - light.position).normalize()
+            var dot = lightDirection.dot(intersection.normal)
+            if dot < 0 {
+                dot = 0
+            }
+
+            result = result * dot * material.diffuseCoefficient
+        }
         return result
     }
 }

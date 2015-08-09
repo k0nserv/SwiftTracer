@@ -1,5 +1,5 @@
 //
-//  Scene.swift
+//  PointLight.swift
 //  SwiftTracer
 //
 //  Created by Hugo Tunius on 09/08/15.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-
-struct Scene {
-    let objects: [Shape]
-    let lights: [PointLight]
+struct PointLight {
+    let color: Color
+    let position: Vector
+    let intensity: Double
 }

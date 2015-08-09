@@ -17,3 +17,7 @@ struct Color {
 func *(left: Color, right: Double) -> Color {
     return Color(r: left.r * right, g: left.g * right, b: left.b * right)
 }
+
+func +(left: Color, right: Color) -> Color {
+    return Color(r: left.r + right.r, g: left.g + right.g , b: left.b + right.b)
+}

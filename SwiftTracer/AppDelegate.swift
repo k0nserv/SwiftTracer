@@ -18,9 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let contentView = window.contentView {
             let width = Int(contentView.frame.size.width)
             let height = Int(contentView.frame.size.height)
-            let position = Vector(x: 0.0, y: 0.0, z: -10.0)
+            let position = Vector(x: 0.0, y: 0.0, z: -15.0)
             let direction = Vector(x: 0.0, y: 0.0, z: 1.0)
-            let camera = Camera(position: position, direction: direction, fov: 45, width: width, height: height)
+            let camera = Camera(position: position, direction: direction, fov: 60, width: width, height: height)
             mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera))
             window.delegate = mainController
 
@@ -34,10 +34,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func buildScene() -> Scene {
-        let material = Material(color: Color(r: 0.1, g: 0.5, b: 0.0))
-        let sphere = Sphere(radius: 2, center: Vector(x: 0.0, y: 0.0, z: 0.0), material: material)
+        let m1 = Material(color: Color(r: 0.1, g: 0.5, b: 0.0), ambientCoefficient: 0.5, diffuseCoefficient: 0.6)
+        let s1 = Sphere(radius: 2, center: Vector(x: 0.0, y: 0.0, z: 0.0), material: m1)
 
-        return Scene(objects: [sphere])
+        let m2 = Material(color: Color(r: 0.5, g: 0.1, b: 0.0), ambientCoefficient: 0.5, diffuseCoefficient: 0.6)
+        let s2 = Sphere(radius: 2, center: Vector(x: 5.0, y: 0.0, z: 0.0), material: m2)
+
+        let m3 = Material(color: Color(r: 0.0, g: 0.1, b: 0.5), ambientCoefficient: 0.5, diffuseCoefficient: 0.6)
+        let s3 = Sphere(radius: 2, center: Vector(x: -5.0, y: 0.0, z: 0.0), material: m3)
+        let light = PointLight(color: Color(r: 0.4, g: 0.4, b: 0.4), position: Vector(x: 0.0, y: 10, z: -5.0), intensity: 0.2)
+
+        return Scene(objects: [s1, s2, s3], lights: [light])
     }
 }
 

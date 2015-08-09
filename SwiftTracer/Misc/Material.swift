@@ -10,4 +10,6 @@ import Foundation
 
 struct Material {
     let color: Color
+    let ambientCoefficient: Double
+    let diffuseCoefficient: Double
 }
