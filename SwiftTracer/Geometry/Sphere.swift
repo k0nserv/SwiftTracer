@@ -43,7 +43,7 @@ extension Sphere : Shape {
             assert(nil != t)
             let intersectionPoint = ray.origin + ray.direction * t!
             let normal = (intersectionPoint - ray.origin).normalize()
-            return Intersection(t: t!, point: intersectionPoint, normal: normal)
+            return Intersection(t: t!, point: intersectionPoint, normal: normal, shape: self)
         }
 
         return nil

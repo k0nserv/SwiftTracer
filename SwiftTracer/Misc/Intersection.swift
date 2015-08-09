@@ -13,4 +13,5 @@ struct Intersection {
     let t: Double
     let point: Vector
     let normal: Vector
+    let shape: Shape
 }
