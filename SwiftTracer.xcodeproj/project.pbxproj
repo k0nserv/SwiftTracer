@@ -19,6 +19,12 @@
 		D65F170C1B77B7BD00866F61 /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F170B1B77B7BD00866F61 /* Intersection.swift */; };
 		D65F170F1B77B8BA00866F61 /* SphereTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F170E1B77B8BA00866F61 /* SphereTest.swift */; };
 		D65F17121B77BD3F00866F61 /* VectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17111B77BD3F00866F61 /* VectorTests.swift */; };
+		D65F17161B77CFF200866F61 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17151B77CFF200866F61 /* MainViewController.swift */; };
+		D65F17191B77D09800866F61 /* PixelRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17181B77D09800866F61 /* PixelRenderView.swift */; };
+		D65F171B1B77D41400866F61 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F171A1B77D41400866F61 /* Renderer.swift */; };
+		D65F171D1B77D7B800866F61 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F171C1B77D7B800866F61 /* Scene.swift */; };
+		D65F171F1B77E5ED00866F61 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F171E1B77E5ED00866F61 /* Color.swift */; };
+		D65F17211B77E7C800866F61 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F17201B77E7C800866F61 /* Camera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,12 @@
 		D65F170B1B77B7BD00866F61 /* Intersection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersection.swift; sourceTree = "<group>"; };
 		D65F170E1B77B8BA00866F61 /* SphereTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereTest.swift; sourceTree = "<group>"; };
 		D65F17111B77BD3F00866F61 /* VectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorTests.swift; sourceTree = "<group>"; };
+		D65F17151B77CFF200866F61 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D65F17181B77D09800866F61 /* PixelRenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelRenderView.swift; sourceTree = "<group>"; };
+		D65F171A1B77D41400866F61 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		D65F171C1B77D7B800866F61 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		D65F171E1B77E5ED00866F61 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D65F17201B77E7C800866F61 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +101,7 @@
 		D65F16E21B77B5D200866F61 /* SwiftTracer */ = {
 			isa = PBXGroup;
 			children = (
+				D65F17171B77D08200866F61 /* Views */,
 				D65F17061B77B75E00866F61 /* Misc */,
 				D65F17011B77B6AE00866F61 /* Math */,
 				D65F16FE1B77B67C00866F61 /* Geometry */,
@@ -96,6 +109,7 @@
 				D65F16E51B77B5D200866F61 /* Assets.xcassets */,
 				D65F16E71B77B5D200866F61 /* MainMenu.xib */,
 				D65F16EA1B77B5D200866F61 /* Info.plist */,
+				D65F17151B77CFF200866F61 /* MainViewController.swift */,
 			);
 			path = SwiftTracer;
 			sourceTree = "<group>";
@@ -134,6 +148,10 @@
 				D65F17071B77B76700866F61 /* Ray.swift */,
 				D65F17091B77B78500866F61 /* Material.swift */,
 				D65F170B1B77B7BD00866F61 /* Intersection.swift */,
+				D65F171A1B77D41400866F61 /* Renderer.swift */,
+				D65F171C1B77D7B800866F61 /* Scene.swift */,
+				D65F171E1B77E5ED00866F61 /* Color.swift */,
+				D65F17201B77E7C800866F61 /* Camera.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -152,6 +170,14 @@
 				D65F17111B77BD3F00866F61 /* VectorTests.swift */,
 			);
 			path = Math;
+			sourceTree = "<group>";
+		};
+		D65F17171B77D08200866F61 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D65F17181B77D09800866F61 /* PixelRenderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,10 +282,16 @@
 				D65F17001B77B69000866F61 /* Sphere.swift in Sources */,
 				D65F17031B77B6B800866F61 /* Vector.swift in Sources */,
 				D65F16E41B77B5D200866F61 /* AppDelegate.swift in Sources */,
+				D65F17191B77D09800866F61 /* PixelRenderView.swift in Sources */,
 				D65F17051B77B6EF00866F61 /* Shape.swift in Sources */,
+				D65F171F1B77E5ED00866F61 /* Color.swift in Sources */,
 				D65F170A1B77B78500866F61 /* Material.swift in Sources */,
 				D65F170C1B77B7BD00866F61 /* Intersection.swift in Sources */,
 				D65F17081B77B76700866F61 /* Ray.swift in Sources */,
+				D65F171B1B77D41400866F61 /* Renderer.swift in Sources */,
+				D65F17211B77E7C800866F61 /* Camera.swift in Sources */,
+				D65F17161B77CFF200866F61 /* MainViewController.swift in Sources */,
+				D65F171D1B77D7B800866F61 /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
