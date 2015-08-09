@@ -36,6 +36,12 @@ class VectorTests: XCTestCase {
         XCTAssertEqualWithAccuracy(v1.length(), 8.535806933, accuracy: 0.001)
     }
 
+    func testNormalize() {
+        let normalizedV1 = v1.normalize()
+
+        XCTAssertTrue(normalizedV1.fuzzyEquals(Vector(x: 0.11715354, y: 0.29288385, z: 0.948943675)))
+    }
+
     func testPrefixSubtraction() {
         let inverted = -v1
         XCTAssertEqual(inverted, Vector(x: -1.0, y: -2.5, z: -8.1))

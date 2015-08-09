@@ -22,6 +22,15 @@ struct Vector : Equatable  {
         return sqrt(dot(self))
     }
 
+    func normalize() -> Vector {
+        let l = length()
+        if l == 0 {
+            return Vector(x: 0.0, y: 0.0, z: 0.0)
+        }
+
+        return Vector(x: (x / l), y: (y / l), z: (z / l))
+    }
+
     func fuzzyEquals(other: Vector) -> Bool {
         var result = true
 
