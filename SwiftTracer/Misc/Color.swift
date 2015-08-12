@@ -12,6 +12,10 @@ struct Color {
     let r: Double
     let g: Double
     let b: Double
+
+    func clamp() -> Color {
+        return Color(r: max(min(1.0, r), 0.0), g: max(min(1.0, g), 0), b: max(min(1.0, b), 0))
+    }
 }
 
 func *(left: Color, right: Double) -> Color {

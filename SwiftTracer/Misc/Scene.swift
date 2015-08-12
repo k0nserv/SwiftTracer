@@ -12,4 +12,5 @@ import Foundation
 struct Scene {
     let objects: [Shape]
     let lights: [PointLight]
+    let clearColor: Color
 }

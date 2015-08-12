@@ -40,7 +40,7 @@ struct Renderer {
                 if let hit = closestHit {
                     result[x].append(shade(hit))
                 } else {
-                    result[x].append(Color(r: 0.0, g: 0.0, b: 0.0))
+                    result[x].append(scene.clearColor)
                 }
             }
         }
@@ -50,7 +50,7 @@ struct Renderer {
 
     private func shade(intersection: Intersection) -> Color {
         let material = intersection.shape.material
-        var result = material.color
+        var result = material.color * material.ambientCoefficient
         for var light in scene.lights {
             let lightDirection = (intersection.point - light.position).normalize()
             var dot = lightDirection.dot(intersection.normal)
@@ -58,8 +58,8 @@ struct Renderer {
                 dot = 0
             }
 
-            result = result * dot * material.diffuseCoefficient
+            result = result + (light.color * light.intensity) * (dot * material.diffuseCoefficient)
         }
-        return result
+        return result.clamp()
     }
 }

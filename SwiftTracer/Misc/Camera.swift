@@ -10,34 +10,26 @@ import Foundation
 
 
 struct Camera {
-    let position: Vector
-    let direction: Vector
-    let up = Vector(x: 0.0, y: 1.0, z: 0.0)
     let fov: Double
     let width: Int
     let height: Int
-    let U: Vector
-    let V: Vector
+    let aspectRatio: Double
 
-    init(position: Vector, direction: Vector, fov: Double, width: Int, height: Int) {
-        self.position = position
-        self.direction = direction
+    init(fov: Double, width: Int, height: Int) {
         self.fov = fov
         self.width = width
         self.height = height
-        U = direction.cross(up).normalize()
-        V = U.cross(direction).normalize()
+        self.aspectRatio = Double(height) / Double(width)
     }
 
     func createRay(x x: Int, y: Int) -> Ray {
-        let normalizedX = (Double(x) / Double(width)) - 0.5
-        let normalizedY = (Double(y) / Double(height)) - 0.5
-        let imagePoint =  U * normalizedX + V * normalizedY + position + direction
-        
-        return Ray(origin: position, direction: (imagePoint - self.position).normalize())
+        let s = -2.0 * tan(fov * 0.5)
+        let direction = Vector(x: Double(x) / Double(width) - 0.5 * s, y: -(Double(y) / Double(height) - 0.5) * s * aspectRatio, z: 1.0)
+
+        return Ray(origin: Vector(x: 0, y: 0, z: 0), direction: direction.normalize())
     }
 
     func cameraWithNewResolution(newWidth newWidth: Int, newHeight: Int) -> Camera {
-        return Camera(position: self.position, direction: self.direction, fov: self.fov, width: newWidth, height: newHeight)
+        return Camera(fov: self.fov, width: newWidth, height: newHeight)
     }
 }

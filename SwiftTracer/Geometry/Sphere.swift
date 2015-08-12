@@ -42,7 +42,7 @@ extension Sphere : Shape {
         if hit {
             assert(nil != t)
             let intersectionPoint = ray.origin + ray.direction * t!
-            let normal = (intersectionPoint - ray.origin).normalize()
+            let normal = (intersectionPoint - center).normalize()
             return Intersection(t: t!, point: intersectionPoint, normal: normal, shape: self)
         }
 

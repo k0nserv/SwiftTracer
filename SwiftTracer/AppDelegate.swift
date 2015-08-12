@@ -18,9 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let contentView = window.contentView {
             let width = Int(contentView.frame.size.width)
             let height = Int(contentView.frame.size.height)
-            let position = Vector(x: 0.0, y: 0.0, z: -15.0)
-            let direction = Vector(x: 0.0, y: 0.0, z: 1.0)
-            let camera = Camera(position: position, direction: direction, fov: 60, width: width, height: height)
+            let camera = Camera(fov: 0.785398163, width: width, height: height)
             mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera))
             window.delegate = mainController
 
@@ -34,17 +32,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func buildScene() -> Scene {
-        let m1 = Material(color: Color(r: 0.1, g: 0.5, b: 0.0), ambientCoefficient: 0.5, diffuseCoefficient: 0.6)
-        let s1 = Sphere(radius: 2, center: Vector(x: 0.0, y: 0.0, z: 0.0), material: m1)
+        let m1 = Material(color: Color(r: 0.8, g: 0.9, b: 0.9), ambientCoefficient: 1.0, diffuseCoefficient: 0.6)
+        let s1 = Sphere(radius: 2, center: Vector(x: 15.0, y: 0.0, z: 15.0), material: m1)
 
-        let m2 = Material(color: Color(r: 0.5, g: 0.1, b: 0.0), ambientCoefficient: 0.5, diffuseCoefficient: 0.6)
-        let s2 = Sphere(radius: 2, center: Vector(x: 5.0, y: 0.0, z: 0.0), material: m2)
+        // rgb(96%, 87%, 62%)
+        let m2 = Material(color: Color(r: 0.96, g: 0.87, b: 0.62), ambientCoefficient: 1.0, diffuseCoefficient: 0.2)
+        let p1 = Plane(position: Vector(x: 0.0, y: -5.0, z: 0.0), normal: Vector(x: 0.0, y: 1.0, z: 0.0), material: m2)
 
-        let m3 = Material(color: Color(r: 0.0, g: 0.1, b: 0.5), ambientCoefficient: 0.5, diffuseCoefficient: 0.6)
-        let s3 = Sphere(radius: 2, center: Vector(x: -5.0, y: 0.0, z: 0.0), material: m3)
-        let light = PointLight(color: Color(r: 0.4, g: 0.4, b: 0.4), position: Vector(x: 0.0, y: 10, z: -5.0), intensity: 0.2)
+        let light = PointLight(color: Color(r: 1.0, g: 1.0, b: 1.0), position: Vector(x: 10, y: 10, z: 10), intensity: 0.7)
 
-        return Scene(objects: [s1, s2, s3], lights: [light])
+
+        // rgb(21%, 62%, 97%)
+        return Scene(objects: [s1, p1], lights: [light], clearColor: Color(r: 0.21, g: 0.62, b: 0.97))
     }
 }
 
