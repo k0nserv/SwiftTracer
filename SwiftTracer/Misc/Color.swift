@@ -25,3 +25,7 @@ func *(left: Color, right: Double) -> Color {
 func +(left: Color, right: Color) -> Color {
     return Color(r: left.r + right.r, g: left.g + right.g , b: left.b + right.b)
 }
+
+func -(left: Color, right: Color) -> Color {
+    return Color(r: left.r - right.r, g: left.g - right.g , b: left.b - right.b)
+}
