@@ -11,6 +11,7 @@ import Foundation
 
 struct Camera {
     let fov: Double
+    let verticalFov: Double
     let width: Int
     let height: Int
     let aspectRatio: Double
@@ -20,11 +21,13 @@ struct Camera {
         self.width = width
         self.height = height
         self.aspectRatio = Double(height) / Double(width)
+        self.verticalFov = self.fov * aspectRatio
     }
 
     func createRay(x x: Int, y: Int) -> Ray {
-        let s = -2.0 * tan(fov * 0.5)
-        let direction = Vector(x: Double(x) / Double(width) - 0.5 * s, y: -(Double(y) / Double(height) - 0.5) * s * aspectRatio, z: 1.0)
+        let px = Double(x) * 2 / Double(width) - 1
+        let py = Double(y) * 2 / Double(height) - 1
+        let direction = Vector(x: px * sin(fov * 0.5), y: py * sin(verticalFov * 0.5), z: 1.0)
 
         return Ray(origin: Vector(x: 0, y: 0, z: 0), direction: direction.normalize())
     }
