@@ -51,10 +51,22 @@ struct Renderer {
     private func shade(intersection: Intersection) -> Color {
         let material = intersection.shape.material
         var result = material.color * material.ambientCoefficient
+
         for var light in scene.lights {
+            var inShadow = false
+            let distanceToLight = (intersection.point - light.position).length()
             let lightDirection = (intersection.point - light.position).normalize()
+            let ray = Ray(origin: intersection.point, direction: lightDirection)
+
+            for var object in scene.objects {
+                if let hit = object.intersectWithRay(ray) where hit.t < distanceToLight {
+                    inShadow = true
+                    break
+                }
+            }
+
             var dot = lightDirection.dot(intersection.normal)
-            if dot < 0 {
+            if dot < 0 || inShadow {
                 dot = 0
             }
 
