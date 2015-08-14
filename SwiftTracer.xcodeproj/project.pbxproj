@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6591DFA1B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6591DF91B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib */; };
 		D65F16E41B77B5D200866F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F16E31B77B5D200866F61 /* AppDelegate.swift */; };
 		D65F16E61B77B5D200866F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E51B77B5D200866F61 /* Assets.xcassets */; };
 		D65F16E91B77B5D200866F61 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E71B77B5D200866F61 /* MainMenu.xib */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D6591DF91B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwiftTracer.MainViewController.xib; sourceTree = "<group>"; };
 		D65F16E01B77B5D200866F61 /* SwiftTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F16E31B77B5D200866F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D65F16E51B77B5D200866F61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		D65F16D71B77B5D200866F61 = {
 			isa = PBXGroup;
 			children = (
+				D6591DF91B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib */,
 				D65F16E21B77B5D200866F61 /* SwiftTracer */,
 				D65F16F21B77B5D200866F61 /* SwiftTracerTests */,
 				D65F16E11B77B5D200866F61 /* Products */,
@@ -274,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6591DFA1B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib in Resources */,
 				D65F16E61B77B5D200866F61 /* Assets.xcassets in Resources */,
 				D65F16E91B77B5D200866F61 /* MainMenu.xib in Resources */,
 			);
@@ -492,6 +496,7 @@
 				D65F16FA1B77B5D200866F61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D65F16FB1B77B5D200866F61 /* Build configuration list for PBXNativeTarget "SwiftTracerTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +505,7 @@
 				D65F16FD1B77B5D200866F61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

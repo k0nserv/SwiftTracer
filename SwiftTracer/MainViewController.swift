@@ -10,7 +10,8 @@ import Cocoa
 
 class MainViewController: NSViewController {
     var renderer: Renderer?
-    var pixelView: PixelRenderView?
+    @IBOutlet weak var pixelView: PixelRenderView!
+    @IBOutlet weak var activityIndicator: NSProgressIndicator!
 
     init?(renderer: Renderer) {
         self.renderer = renderer
@@ -18,39 +19,35 @@ class MainViewController: NSViewController {
     }
 
     required init?(coder: NSCoder) {
-        self.renderer = nil
         super.init(coder: coder)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         renderer!.delegate = self
         renderer!.render()
+        activityIndicator.startAnimation(nil)
         // Do view setup here.
     }
 
-    override func viewDidLayout() {
-        super.viewDidLayout()
-        print("Helllo new layout")
-    }
-
-    override func loadView() {
-        pixelView = PixelRenderView()
-        view = pixelView!
+    private func startRendering() {
+        pixelView.hidden = true
+        activityIndicator.hidden = false
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            self.renderer!.render()
+        }
     }
 }
 
 extension MainViewController : NSWindowDelegate {
     func windowDidResize(notification: NSNotification) {
         view.frame = (view.window?.contentView?.bounds)!
+        pixelView!.frame = view.bounds
 
-        if var r = renderer {
-            r.camera = r.camera.cameraWithNewResolution(newWidth: Int(self.view.frame.width), newHeight: Int(self.view.frame.height))
-            r.abortRendering()
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                r.render()
-            }
-        }
+        renderer!.camera = renderer!.camera.cameraWithNewResolution(newWidth: Int(self.view.frame.width), newHeight: Int(self.view.frame.height))
+        renderer!.abortRendering()
+        startRendering()
     }
 }
 
@@ -59,6 +56,8 @@ extension MainViewController : RendererDelegate {
         dispatch_async(dispatch_get_main_queue()) {
             if let pv = self.pixelView {
                 pv.pixels = pixels
+                self.pixelView.hidden = false
+                self.activityIndicator.hidden = true
                 pv.setNeedsDisplayInRect(pv.bounds)
             }
         }
