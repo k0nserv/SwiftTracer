@@ -9,8 +9,14 @@
 import Foundation
 
 
-struct Scene {
+class Scene {
     let objects: [Shape]
     let lights: [PointLight]
     let clearColor: Color
+
+    init(objects: [Shape], lights: [PointLight], clearColor: Color) {
+        self.objects = objects
+        self.lights = lights
+        self.clearColor = clearColor
+    }
 }

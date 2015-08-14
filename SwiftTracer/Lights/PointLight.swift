@@ -8,8 +8,14 @@
 
 import Foundation
 
-struct PointLight {
+class PointLight {
     let color: Color
     let position: Vector
     let intensity: Double
+
+    init(color: Color, position: Vector, intensity: Double) {
+        self.color = color
+        self.position = position
+        self.intensity = intensity
+    }
 }

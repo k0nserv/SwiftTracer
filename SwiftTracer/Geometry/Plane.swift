@@ -9,10 +9,16 @@
 import Foundation
 
 
-struct Plane {
+class Plane {
     let position: Vector
     let normal: Vector
     let material: Material
+
+    init(position: Vector, normal: Vector, material: Material) {
+        self.position = position
+        self.normal = normal
+        self.material = material
+    }
 }
 
 extension Plane : Shape {

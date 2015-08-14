@@ -9,10 +9,16 @@
 import Foundation
 
 
-struct Sphere {
+class Sphere {
     let radius: Double
     let center: Vector
     let material: Material
+
+    init(radius: Double, center: Vector, material: Material) {
+        self.radius = radius
+        self.center = center
+        self.material = material
+    }
 }
 
 extension Sphere : Shape {
