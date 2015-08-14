@@ -24,7 +24,8 @@ class MainViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        render()
+        renderer!.delegate = self
+        renderer!.render()
         // Do view setup here.
     }
 
@@ -37,23 +38,29 @@ class MainViewController: NSViewController {
         pixelView = PixelRenderView()
         view = pixelView!
     }
-
-    private func render() {
-        if let pv = pixelView {
-            if nil != renderer {
-                pv.pixels = renderer!.render()
-            }
-        }
-    }
 }
 
 extension MainViewController : NSWindowDelegate {
     func windowDidResize(notification: NSNotification) {
         view.frame = (view.window?.contentView?.bounds)!
 
-        if nil != renderer {
-            renderer!.camera = renderer!.camera.cameraWithNewResolution(newWidth: Int(view.frame.width), newHeight: Int(view.frame.height))
-            render()
+        if var r = renderer {
+            r.camera = r.camera.cameraWithNewResolution(newWidth: Int(self.view.frame.width), newHeight: Int(self.view.frame.height))
+            r.abortRendering()
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                r.render()
+            }
+        }
+    }
+}
+
+extension MainViewController : RendererDelegate {
+    func didFinishRendering(pixels: [[Color]]) {
+        dispatch_async(dispatch_get_main_queue()) {
+            if let pv = self.pixelView {
+                pv.pixels = pixels
+                pv.setNeedsDisplayInRect(pv.bounds)
+            }
         }
     }
 }

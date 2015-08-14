@@ -8,22 +8,34 @@
 
 import Foundation
 
+protocol RendererDelegate {
+    func didFinishRendering(pixels: [[Color]])
+}
 
 struct Renderer {
     let scene: Scene
     var camera: Camera
+    var pixels: [[Color]]
+    var delegate: RendererDelegate?
+    private var isRendering = false
 
     init(scene: Scene, camera: Camera) {
         self.scene = scene
         self.camera = camera
+        self.pixels = []
     }
 
-    func render() -> [[Color]] {
+    mutating func render() {
+        isRendering = true
         var result: [[Color]] = []
 
         for var x = 0; x < camera.width; ++x {
             result.append([])
             for var y = 0; y < camera.height; ++y {
+                if !isRendering {
+                    return
+                }
+
                 let ray = camera.createRay(x: x, y: y)
                 var closestHit: Intersection?
 
@@ -45,7 +57,16 @@ struct Renderer {
             }
         }
 
-        return result
+        pixels = result
+
+        if let d = delegate {
+            d.didFinishRendering(pixels)
+        }
+        isRendering = false
+    }
+
+    mutating func abortRendering() {
+        isRendering = false
     }
 
     private func shade(intersection: Intersection) -> Color {
