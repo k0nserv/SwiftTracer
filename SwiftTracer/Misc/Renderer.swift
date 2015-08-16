@@ -14,15 +14,17 @@ protocol RendererDelegate {
 
 struct Renderer {
     let scene: Scene
+    let depth: Int
     var camera: Camera
     var pixels: [[Color]]
     var delegate: RendererDelegate?
     private var isRendering = false
 
-    init(scene: Scene, camera: Camera) {
+    init(scene: Scene, camera: Camera, depth: Int) {
         self.scene = scene
         self.camera = camera
         self.pixels = []
+        self.depth = depth
     }
 
     mutating func render() {
@@ -37,23 +39,8 @@ struct Renderer {
                 }
 
                 let ray = camera.createRay(x: x, y: y)
-                var closestHit: Intersection?
-
-                for var object in scene.objects {
-                    if let hit = object.intersectWithRay(ray) {
-                        if  let previousHit = closestHit where hit.t < previousHit.t  {
-                            closestHit = hit
-                        } else if closestHit == nil {
-                            closestHit = hit
-                        }
-                    }
-                }
-
-                if let hit = closestHit {
-                    result[x].append(shade(hit))
-                } else {
-                    result[x].append(scene.clearColor)
-                }
+                let color = traceRay(ray, depth: depth)
+                result[x].append(color)
             }
         }
 
@@ -67,6 +54,28 @@ struct Renderer {
 
     mutating func abortRendering() {
         isRendering = false
+    }
+
+    private mutating func traceRay(ray: Ray, depth: Int) -> Color {
+        var result = scene.clearColor
+        var closestHit: Intersection?
+
+        for var object in scene.objects {
+            if let hit = object.intersectWithRay(ray) {
+                if  let previousHit = closestHit where hit.t < previousHit.t  {
+                    closestHit = hit
+                } else if closestHit == nil {
+                    closestHit = hit
+                }
+            }
+        }
+
+        if let hit = closestHit {
+            result = shade(hit)
+        }
+
+
+        return result
     }
 
     private func shade(intersection: Intersection) -> Color {
