@@ -54,11 +54,11 @@ extension MainViewController : NSWindowDelegate {
 extension MainViewController : RendererDelegate {
     func didFinishRendering(pixels: [[Color]]) {
         dispatch_async(dispatch_get_main_queue()) {
-            if let pv = self.pixelView {
+            if var pv = self.pixelView {
                 pv.pixels = pixels
-                self.pixelView.hidden = false
-                self.activityIndicator.hidden = true
                 pv.setNeedsDisplayInRect(pv.bounds)
+                self.activityIndicator.hidden = true
+                self.pixelView.hidden = false
             }
         }
     }
