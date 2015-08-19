@@ -9,14 +9,14 @@
 import Foundation
 
 protocol RendererDelegate {
-    func didFinishRendering(pixels: [[Color]])
+    func didFinishRendering(pixels: [Color])
 }
 
 struct Renderer {
     let scene: Scene
     let depth: Int
     var camera: Camera
-    var pixels: [[Color]]
+    var pixels: [Color]
     var delegate: RendererDelegate?
     private var isRendering = false
 
@@ -29,18 +29,18 @@ struct Renderer {
 
     mutating func render() {
         isRendering = true
-        var result: [[Color]] = []
+        var result: [Color] = Array(count: camera.width * camera.height, repeatedValue: scene.clearColor)
 
-        for var x = 0; x < camera.width; ++x {
-            result.append([])
-            for var y = 0; y < camera.height; ++y {
+
+        for var y = 0; y < camera.height; ++y {
+            for var x = 0; x < camera.width; ++x {
                 if !isRendering {
                     return
                 }
 
                 let ray = camera.createRay(x: x, y: y)
                 let color = traceRay(ray, depth: depth)
-                result[x].append(color)
+                result[y * camera.width + x] = color
             }
         }
 
@@ -102,6 +102,6 @@ struct Renderer {
 
             result = result + (light.color * light.intensity) * (dot * material.diffuseCoefficient)
         }
-        return result.clamp()
+        return result
     }
 }

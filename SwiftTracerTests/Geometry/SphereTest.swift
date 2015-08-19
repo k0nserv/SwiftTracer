@@ -11,7 +11,7 @@ import XCTest
 @testable import SwiftTracer
 
 class SphereTests: XCTestCase {
-    let sphere = Sphere(radius: 2.0, center: Vector(x: 0.0, y: 0.0, z: 0.0))
+    let sphere = Sphere(radius: 2.0, center: Vector(x: 0.0, y: 0.0, z: 0.0), material: Material(color: Color(r: 0.0, g: 0.0, b: 0.0), ambientCoefficient: 0.0, diffuseCoefficient: 0.0))
 
     func testMiss() {
         let ray = Ray(origin: Vector(x: 0.0, y: 0.0, z: -5.0), direction: Vector(x: 1.0, y: 0.0, z: 0.0))

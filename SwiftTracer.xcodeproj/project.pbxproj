@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62F7CF41B84AFEA0046308E /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F7CF31B84AFEA0046308E /* ColorTests.swift */; };
 		D6591DFA1B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6591DF91B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib */; };
 		D65F16E41B77B5D200866F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F16E31B77B5D200866F61 /* AppDelegate.swift */; };
 		D65F16E61B77B5D200866F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E51B77B5D200866F61 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D62F7CF31B84AFEA0046308E /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		D6591DF91B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwiftTracer.MainViewController.xib; sourceTree = "<group>"; };
 		D65F16E01B77B5D200866F61 /* SwiftTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F16E31B77B5D200866F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D62F7CF21B84AFDD0046308E /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				D62F7CF31B84AFEA0046308E /* ColorTests.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		D65F16D71B77B5D200866F61 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +135,7 @@
 		D65F16F21B77B5D200866F61 /* SwiftTracerTests */ = {
 			isa = PBXGroup;
 			children = (
+				D62F7CF21B84AFDD0046308E /* Misc */,
 				D65F17101B77BD3200866F61 /* Math */,
 				D65F170D1B77B8AF00866F61 /* Geometry */,
 				D65F16F31B77B5D200866F61 /* SwiftTracerTests.swift */,
@@ -320,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D65F170F1B77B8BA00866F61 /* SphereTest.swift in Sources */,
+				D62F7CF41B84AFEA0046308E /* ColorTests.swift in Sources */,
 				D65F16F41B77B5D200866F61 /* SwiftTracerTests.swift in Sources */,
 				D65F17121B77BD3F00866F61 /* VectorTests.swift in Sources */,
 			);

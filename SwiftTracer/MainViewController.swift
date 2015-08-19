@@ -52,7 +52,7 @@ extension MainViewController : NSWindowDelegate {
 }
 
 extension MainViewController : RendererDelegate {
-    func didFinishRendering(pixels: [[Color]]) {
+    func didFinishRendering(pixels: [Color]) {
         dispatch_async(dispatch_get_main_queue()) {
             if var pv = self.pixelView {
                 pv.pixels = pixels

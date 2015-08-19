@@ -9,47 +9,41 @@
 import Cocoa
 
 class PixelRenderView: NSView {
-    var pixels: [[Color]] = []
+    var pixels: [Color] = [] {
+        didSet {
+            rawPixels = UnsafeMutablePointer<UInt8>.alloc(pixels.count * 4)
+
+            var index = 0
+            pixels.forEach {
+                rawPixels[index] = $0.r
+                rawPixels[index + 1] = $0.g
+                rawPixels[index + 2] = $0.b
+                rawPixels[index + 3] = 255
+                index += 4
+            }
+        }
+    }
+    private var rawPixels: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>()
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-        if pixels.count == 0 || pixels[0].count == 0 {
+        if pixels.count == 0 {
             return
         }
 
-        let width = pixels.count
-        let height = pixels[0].count
-
-        let rep = NSBitmapImageRep(bitmapDataPlanes: nil,
-                                         pixelsWide: width,
-                                         pixelsHigh: height,
+        let rep = NSBitmapImageRep(bitmapDataPlanes: &rawPixels,
+                                         pixelsWide: Int(bounds.size.width),
+                                         pixelsHigh: Int(bounds.size.height),
                                       bitsPerSample: 8,
-                                    samplesPerPixel: 3,
-                                           hasAlpha: false,
+                                    samplesPerPixel: 4,
+                                           hasAlpha: true,
                                            isPlanar: false,
                                      colorSpaceName: NSDeviceRGBColorSpace,
-                                        bytesPerRow: width * 3,
-                                       bitsPerPixel: 24)
+                                        bytesPerRow: Int(bounds.size.width) * 4,
+                                       bitsPerPixel: 32)
         guard let r = rep else {
             return
         }
-
-        let pixelData = r.bitmapData
-        NSLog("Width: \(width)")
-        NSLog("Height: \(height)")
-        NSLog("Bytes per row \(r.bytesPerRow)")
-
-        for var y = 0; y < height; ++y {
-            for var x = 0; x < width; ++x {
-                let pixel = pixels[x][y]
-                let index = y * r.bytesPerRow + x * 3
-                pixelData[index + 0] = UInt8(pixel.r * 255)
-                pixelData[index + 1] = UInt8(pixel.g * 255)
-                pixelData[index + 2] = UInt8(pixel.b * 255)
-            }
-        }
-
-
 
         r.drawInRect(dirtyRect)
     }    

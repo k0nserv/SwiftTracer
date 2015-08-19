@@ -8,24 +8,74 @@
 
 import Foundation
 
-struct Color {
-    let r: Double
-    let g: Double
-    let b: Double
+typealias Color = UInt32
 
-    func clamp() -> Color {
-        return Color(r: max(min(1.0, r), 0.0), g: max(min(1.0, g), 0), b: max(min(1.0, b), 0))
+extension Color {
+    var r: UInt8 {
+        get {
+            return UInt8((self & 0xFF000000) >> 0x00000018)
+        }
+    }
+
+    var g: UInt8 {
+        get {
+            return UInt8((self & 0x00FF0000) >> 0x00000010)
+        }
+    }
+
+    var b: UInt8 {
+        get {
+            return UInt8((self & 0x0000FF00) >> 0x00000008)
+        }
+    }
+
+
+    init(r: UInt8, g: UInt8, b: UInt8) {
+        self = 0x000000FF
+        self = self | UInt32(r) << 0x00000018
+        self = self | UInt32(g) << 0x00000010
+        self = self | UInt32(b) << 0x00000008
+    }
+
+    init(r: Double, g: Double, b: Double) {
+        let rNormalized = Color.clampValue(Int32(255.0 * r))
+        let gNormalized = Color.clampValue(Int32(255.0 * g))
+        let bNormalized = Color.clampValue(Int32(255.0 * b))
+
+        self.init(r: rNormalized,
+                  g: gNormalized,
+                  b: bNormalized)
+    }
+
+    init(_ color: UInt32) {
+        self = color
+    }
+
+    internal static func clampValue(value: Int32) -> UInt8 {
+        if value < 0 {
+            return 0
+        }
+
+        if value > UINT8_MAX {
+            return UInt8(UINT8_MAX)
+        }
+
+        return UInt8(value)
     }
 }
 
+
 func *(left: Color, right: Double) -> Color {
-    return Color(r: left.r * right, g: left.g * right, b: left.b * right)
+    return Color(r: Color.clampValue(Int32(Double(left.r) * right)),
+        g: Color.clampValue(Int32(Double(left.g) * right)),
+        b: Color.clampValue(Int32(Double(left.b) * right)))
 }
 
 func +(left: Color, right: Color) -> Color {
-    return Color(r: left.r + right.r, g: left.g + right.g , b: left.b + right.b)
+    return Color(r: Color.clampValue(Int32(left.r) + Int32(right.r)), g: Color.clampValue(Int32(left.g) + Int32(right.g)) , b: Color.clampValue(Int32(left.b) + Int32(right.b)))
 }
 
+
 func -(left: Color, right: Color) -> Color {
-    return Color(r: left.r - right.r, g: left.g - right.g , b: left.b - right.b)
+    return Color(r: Color.clampValue(Int32(left.r) - Int32(right.r)), g: Color.clampValue(Int32(left.g) - Int32(right.g)) , b: Color.clampValue(Int32(left.b) - Int32(right.b)))
 }
