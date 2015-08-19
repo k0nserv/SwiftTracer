@@ -60,7 +60,7 @@ struct Renderer {
         var result = scene.clearColor
         var closestHit: Intersection?
 
-        for var object in scene.objects {
+        for object: Shape in scene.objects {
             if let hit = object.intersectWithRay(ray) {
                 if  let previousHit = closestHit where hit.t < previousHit.t  {
                     closestHit = hit
@@ -82,13 +82,13 @@ struct Renderer {
         let material = intersection.shape.material
         var result = material.color * material.ambientCoefficient
 
-        for var light in scene.lights {
+        for light in scene.lights {
             var inShadow = false
             let distanceToLight = (intersection.point - light.position).length()
             let lightDirection = (intersection.point - light.position).normalize()
             let ray = Ray(origin: intersection.point, direction: lightDirection)
 
-            for var object in scene.objects {
+            for object in scene.objects {
                 if let hit = object.intersectWithRay(ray) where hit.t < distanceToLight {
                     inShadow = true
                     break
