@@ -13,28 +13,28 @@ typealias Color = UInt32
 extension Color {
     var r: UInt8 {
         get {
-            return UInt8((self & 0xFF000000) >> 0x00000018)
+            return UInt8((self & 0x000000FF) >> 0x00000000)
         }
     }
 
     var g: UInt8 {
         get {
-            return UInt8((self & 0x00FF0000) >> 0x00000010)
+            return UInt8((self & 0x0000FF00) >> 0x00000008)
         }
     }
 
     var b: UInt8 {
         get {
-            return UInt8((self & 0x0000FF00) >> 0x00000008)
+            return UInt8((self & 0x00FF0000) >> 0x00000010)
         }
     }
 
 
     init(r: UInt8, g: UInt8, b: UInt8) {
-        self = 0x000000FF
-        self = self | UInt32(r) << 0x00000018
-        self = self | UInt32(g) << 0x00000010
-        self = self | UInt32(b) << 0x00000008
+        self = 0xFF000000
+        self = self | UInt32(r) << 0x00000000
+        self = self | UInt32(g) << 0x00000008
+        self = self | UInt32(b) << 0x00000010
     }
 
     init(r: Double, g: Double, b: Double) {

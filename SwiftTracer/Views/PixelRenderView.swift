@@ -11,16 +11,7 @@ import Cocoa
 class PixelRenderView: NSView {
     var pixels: [Color] = [] {
         didSet {
-            rawPixels = UnsafeMutablePointer<UInt8>.alloc(pixels.count * 4)
-
-            var index = 0
-            pixels.forEach {
-                rawPixels[index] = $0.r
-                rawPixels[index + 1] = $0.g
-                rawPixels[index + 2] = $0.b
-                rawPixels[index + 3] = 255
-                index += 4
-            }
+            rawPixels = UnsafeMutablePointer<UInt8>(pixels)
         }
     }
     private var rawPixels: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>()
