@@ -52,7 +52,8 @@ extension MainViewController : NSWindowDelegate {
 }
 
 extension MainViewController : RendererDelegate {
-    func didFinishRendering(pixels: [Color]) {
+    func didFinishRendering(pixels: [Color], duration: NSTimeInterval) {
+        NSLog("Rendering took \(duration) seconds")
         dispatch_async(dispatch_get_main_queue()) {
             if let pv = self.pixelView {
                 pv.pixels = pixels

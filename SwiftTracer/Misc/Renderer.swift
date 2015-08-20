@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RendererDelegate {
-    func didFinishRendering(pixels: [Color])
+    func didFinishRendering(pixels: [Color], duration: NSTimeInterval)
 }
 
 struct Renderer {
@@ -19,6 +19,7 @@ struct Renderer {
     var pixels: [Color]
     var delegate: RendererDelegate?
     private var isRendering = false
+    var startTime: NSDate = NSDate()
 
     init(scene: Scene, camera: Camera, depth: Int) {
         self.scene = scene
@@ -30,6 +31,7 @@ struct Renderer {
     mutating func render() {
         isRendering = true
         var result: [Color] = Array(count: camera.width * camera.height, repeatedValue: scene.clearColor)
+        startTime = NSDate()
 
 
         for var y = 0; y < camera.height; ++y {
@@ -47,7 +49,8 @@ struct Renderer {
         pixels = result
 
         if let d = delegate {
-            d.didFinishRendering(pixels)
+            let duration = NSDate().timeIntervalSinceDate(startTime)
+            d.didFinishRendering(pixels, duration: duration)
         }
         isRendering = false
     }
