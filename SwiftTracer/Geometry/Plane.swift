@@ -28,7 +28,7 @@ extension Plane : Shape {
             return nil
         }
 
-        let t = -(position - ray.origin).dot(normal) / (ray.direction.dot(normal))
+        let t = (position - ray.origin).dot(normal) / denominator
 
         if t > 0 {
             let intersectionPoint = ray.origin + ray.direction * t

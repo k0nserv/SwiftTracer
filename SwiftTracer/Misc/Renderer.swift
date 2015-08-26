@@ -43,7 +43,7 @@ struct Renderer {
 
                 let ray = camera.createRay(x: x, y: y)
                 let color = traceRay(ray, depth: depth)
-                result[y * camera.width + x] = color
+                result[(camera.height - 1 - y) * camera.width + x] = color
             }
         }
 
