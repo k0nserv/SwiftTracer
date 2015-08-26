@@ -13,6 +13,7 @@ protocol RendererDelegate {
 }
 
 struct Renderer {
+    private static let epsilon: Double = 1e-10
     let scene: Scene
     let depth: Int
     var camera: Camera
@@ -60,6 +61,10 @@ struct Renderer {
     }
 
     private mutating func traceRay(ray: Ray, depth: Int) -> Color {
+        if depth == 0 {
+            return Color(r: 0.0, g: 0.0, b: 0.0)
+        }
+
         var result = scene.clearColor
         var closestHit: Intersection?
 
@@ -75,6 +80,13 @@ struct Renderer {
 
         if let hit = closestHit {
             result = shade(hit)
+            if hit.shape.material.isReflective {
+                let newDirection = ray.direction.reflect(hit.normal).normalize()
+                let newRay = Ray(origin: hit.point + hit.point * newDirection * Renderer.epsilon,
+                              direction: ray.direction.reflect(hit.normal).normalize())
+                let reflectiveColor = traceRay(newRay, depth: depth - 1)
+                result = result + reflectiveColor * hit.shape.material.specularCoefficient
+            }
         }
 
 
