@@ -100,8 +100,9 @@ struct Renderer {
         for light in scene.lights {
             var inShadow = false
             let distanceToLight = (intersection.point - light.position).length()
-            let lightDirection = (intersection.point - light.position).normalize()
-            let ray = Ray(origin: intersection.point, direction: lightDirection)
+            let lightDirection = (light.position - intersection.point).normalize()
+            let ray = Ray(origin: intersection.point + lightDirection * Renderer.epsilon,
+                       direction: lightDirection)
 
             for object in scene.objects {
                 if let hit = object.intersectWithRay(ray) where hit.t < distanceToLight {
