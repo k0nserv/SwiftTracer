@@ -32,22 +32,64 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func buildScene() -> Scene {
-        let m1 = Material(color: Color(r: 0.8, g: 0.9, b: 0.9), ambientCoefficient: 0.5, diffuseCoefficient: 0.4, specularCoefficient: 0.1)
-        let s1 = Sphere(radius: 2, center: Vector(x: 2.0, y: 0.0, z: 12.0), material: m1)
-        let s2 = Sphere(radius: 2, center: Vector(x: -2.0, y: 0.0, z: 15.0), material: m1)
+        let wallMaterial = Material(color: Color(r: 1.0, g: 1.0, b: 1.0),
+                        ambientCoefficient: 0.6,
+                       diffuseCoefficient: 0.3,
+                      specularCoefficient: 0.0,
+                    reflectionCoefficient: 0.0,
+                    refractionCoefficient: nil)
+        let floor = Plane(position: Vector(x: 0.0, y: -1.0, z: 0.0), normal: Vector(x: 0.0, y: 1.0, z: 0.0), material: wallMaterial)
+        let frontWall = Plane(position: Vector(x: 0.0, y: 0.0, z: 50.0), normal: Vector(x: 0.0, y: 0.0, z: -1.0), material: wallMaterial)
+        let roof = Plane(position: Vector(x: 0.0, y: 15.0, z: 0.0), normal: Vector(x: 0.0, y: -1.0, z: 0.0), material: wallMaterial)
 
+        // rgb(7%, 32%, 57%)
+        let leftWallMaterial = Material(color: Color(r: 0.07, g: 0.32, b: 0.57),
+                           ambientCoefficient: 0.6,
+                           diffuseCoefficient: 0.3,
+                          specularCoefficient: 0.0,
+                        reflectionCoefficient: 0.0,
+                        refractionCoefficient: nil)
+        let leftWall = Plane(position: Vector(x: -7.0, y: 0.0, z: 0.0), normal: Vector(x: 1.0, y: 0.0, z: 0.0), material: leftWallMaterial)
 
-        // rgb(96%, 87%, 62%)
-        let m2 = Material(color: Color(r: 1.0, g: 1.0, b: 1.0), ambientCoefficient: 0.6, diffuseCoefficient: 0.6, specularCoefficient: 0.0)
-        let m3 = Material(color: Color(r: 1.0, g: 1.0, b: 1.0), ambientCoefficient: m2.ambientCoefficient, diffuseCoefficient: m2.diffuseCoefficient, specularCoefficient: m2.specularCoefficient)
-        let p1 = Plane(position: Vector(x: 0.0, y: -5.0, z: 0.0), normal: Vector(x: 0.0, y: 1.0, z: 0.0), material: m2)
-        let p2 = Plane(position: Vector(x: 0.0, y: 0.0, z: 100.0), normal: Vector(x: 0.0, y: 0.0, z: -1.0), material: m2)
-        let p3 = Plane(position: Vector(x: 20.0, y: 0.0, z: 0.0), normal: Vector(x: -1.0, y: 0.0, z: 0.0), material: m3)
+        let backWallMaterial = Material(color: Color(r: 0.0, g: 0.0, b: 0.0),
+                       ambientCoefficient: 0.0,
+                       diffuseCoefficient: 0.0,
+                      specularCoefficient: 0.0,
+                    reflectionCoefficient: 0.0,
+                    refractionCoefficient: nil)
+        let backWall = Plane(position: Vector(x: 0.0, y: 0.0, z: -1), normal: Vector(x: 0.0, y: 0.0, z: 1.0), material: backWallMaterial)
 
-        let light = PointLight(color: Color(r: 1.0, g: 1.0, b: 1.0), position: Vector(x: 5, y: 10, z: 0), intensity: 0.7)
+        // rgb(57%, 7%, 7%)
+        let rightWallMaterial = Material(color: Color(r: 0.7, g: 0.32, b: 0.57),
+            ambientCoefficient: 0.6,
+            diffuseCoefficient: 0.3,
+            specularCoefficient: 0.0,
+            reflectionCoefficient: 0.0,
+            refractionCoefficient: nil)
+        let rightWall = Plane(position: Vector(x: 7.0, y: 0.0, z: 0.0), normal: Vector(x: -1.0, y: 0.0, z: 0.0), material: rightWallMaterial)
 
-        // rgb(21%, 62%, 97%)
-        return Scene(objects: [s1, s2, p1], lights: [light], clearColor: Color(r: 0.21, g: 0.62, b: 0.97))
+        let reflectiveMaterial = Material(color: Color(r: 0.0, g: 0.0, b: 0.0),
+                             ambientCoefficient: 0.6,
+                             diffuseCoefficient: 0.3,
+                            specularCoefficient: 0.4,
+                          reflectionCoefficient: 0.6,
+                          refractionCoefficient: nil)
+        let s1 = Sphere(radius: 0.5, center: Vector(x: -1.5, y: 0.0, z: 10.0), material: reflectiveMaterial)
+
+        let refractiveMaterial = Material(color: Color(r: 1.0, g: 1.0, b: 1.0),
+                             ambientCoefficient: 0.0,
+                             diffuseCoefficient: 0.4,
+                            specularCoefficient: 0.4,
+                          reflectionCoefficient: 0.0,
+                          refractionCoefficient: 1.5)
+        let s2 = Sphere(radius: 0.5, center: Vector(x: -0.6, y: 0.6, z: 8.0), material: refractiveMaterial)
+
+        let greenMaterial = Material(color: Color(r: 0.1, g: 0.74, b: 0.23), ambientCoefficient: 0.5, diffuseCoefficient: 0.3, specularCoefficient: 0.0, reflectionCoefficient: 0.0, refractionCoefficient: nil)
+        let s3 = Sphere(radius: 0.5, center: Vector(x: 0.0, y: 1.2, z: 12.0), material: greenMaterial)
+
+        let light = PointLight(color: Color(r: 1.0, g: 1.0, b: 1.0), position: Vector(x: 0, y: 10, z: 8), intensity: 0.6)
+
+        return Scene(objects: [floor, roof, frontWall, leftWall, rightWall, backWall, s1, s2, s3], lights: [light], clearColor: Color(r: 0.0, g: 0.0, b: 0.0))
     }
 }
 
