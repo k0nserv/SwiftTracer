@@ -49,7 +49,7 @@ struct Vector : Equatable  {
     }
 
     func reflect(normal: Vector) -> Vector {
-        return self - normal * (2 * self.dot(normal))
+        return self - normal * 2 * self.dot(normal)
     }
 }
 
