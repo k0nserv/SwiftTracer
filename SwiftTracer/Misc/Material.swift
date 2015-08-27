@@ -13,9 +13,13 @@ struct Material {
     let ambientCoefficient: Double
     let diffuseCoefficient: Double
     let specularCoefficient: Double
+
+    let reflectionCoefficient: Double
     var isReflective: Bool {
         get {
-            return specularCoefficient > 0.0
+            return reflectionCoefficient > 0.0
         }
     }
+
+    let refractionCoefficient: Double?
 }

@@ -79,13 +79,13 @@ struct Renderer {
         }
 
         if let hit = closestHit {
-            result = shade(hit)
+            result = shade(hit, originalRay: ray)
             if hit.shape.material.isReflective {
                 let newDirection = ray.direction.reflect(hit.normal).normalize()
                 let newRay = Ray(origin: hit.point + hit.point * newDirection * Renderer.epsilon,
-                              direction: ray.direction.reflect(hit.normal).normalize())
+                              direction: newDirection)
                 let reflectiveColor = traceRay(newRay, depth: depth - 1)
-                result = result + reflectiveColor * hit.shape.material.specularCoefficient
+                result = result + reflectiveColor * hit.shape.material.reflectionCoefficient
             }
         }
 
