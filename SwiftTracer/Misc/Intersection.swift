@@ -14,4 +14,7 @@ struct Intersection {
     let point: Vector
     let normal: Vector
     let shape: Shape
+    // Wether or not the hit is
+    // from inside the shape itself
+    let inside: Bool
 }

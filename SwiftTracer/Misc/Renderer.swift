@@ -13,7 +13,7 @@ protocol RendererDelegate {
 }
 
 struct Renderer {
-    private static let epsilon: Double = 1e-10
+    private static let epsilon: Double = 1e-12
     let scene: Scene
     let depth: Int
     var camera: Camera
@@ -96,6 +96,29 @@ struct Renderer {
                               direction: newDirection)
                 let reflectiveColor = traceRay(newRay, depth: depth - 1)
                 result = result + reflectiveColor * hit.shape.material.reflectionCoefficient
+            }
+
+            if var refractionCoefficient = hit.shape.material.refractionCoefficient {
+                if hit.inside { // Leaving refractive material
+                    refractionCoefficient = 1.0
+                }
+                let n = ray.mediumRefractionIndex / refractionCoefficient
+                var N = hit.normal
+                if hit.inside {
+                    N = -N
+                }
+                let cosI = (N.dot(ray.direction))
+                let c2 = 1.0 - n * n * (1.0 - cosI * cosI)
+                if c2 > 0.0 {
+                    let T = (ray.direction * n + N * (n * cosI - sqrt(c2))).normalize()
+                    let newRay = Ray(origin: hit.point + hit.point * T * Renderer.epsilon,
+                                  direction: T,
+                      mediumRefractionIndex: refractionCoefficient)
+                    let refractionColor = traceRay(newRay, depth: depth - 1)
+                    let absorbance = hit.shape.material.color * 0.15 * -hit.t
+                    let transparency = Color(r: exp(absorbance.rd), g: exp(absorbance.gd), b: exp(absorbance.bd))
+                    result = result + refractionColor * transparency
+                }
             }
         }
 

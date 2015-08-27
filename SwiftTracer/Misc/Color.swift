@@ -29,6 +29,24 @@ extension Color {
         }
     }
 
+    var rd: Double {
+        get {
+            return Double(r) / 255.0
+        }
+    }
+
+    var gd: Double {
+        get {
+            return Double(g) / 255.0
+        }
+    }
+
+    var bd: Double {
+        get {
+            return Double(b) / 255.0
+        }
+    }
+
 
     init(r: UInt8, g: UInt8, b: UInt8) {
         self = 0xFF000000
@@ -69,6 +87,10 @@ func *(left: Color, right: Double) -> Color {
     return Color(r: Color.clampValue(Int32(Double(left.r) * right)),
         g: Color.clampValue(Int32(Double(left.g) * right)),
         b: Color.clampValue(Int32(Double(left.b) * right)))
+}
+
+func *(left: Color, right: Color) -> Color {
+    return Color(r: left.rd * right.rd, g: left.gd * right.gd, b: left.bd * right.bd)
 }
 
 func +(left: Color, right: Color) -> Color {
