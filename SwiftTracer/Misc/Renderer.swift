@@ -103,7 +103,7 @@ struct Renderer {
         return result
     }
 
-    private func shade(intersection: Intersection) -> Color {
+    private func shade(intersection: Intersection, originalRay: Ray) -> Color {
         let material = intersection.shape.material
         var result = material.color * material.ambientCoefficient
 
@@ -121,12 +121,17 @@ struct Renderer {
                 }
             }
 
+            let lightColor = light.color * light.intensity
             var dot = lightDirection.dot(intersection.normal)
-            if dot < 0 || inShadow {
-                dot = 0
+            if dot > 0 && !inShadow {
+                result = result + lightColor * (dot * material.diffuseCoefficient)
             }
 
-            result = result + (light.color * light.intensity) * (dot * material.diffuseCoefficient)
+            dot = originalRay.direction.dot(lightDirection.reflect(intersection.normal))
+            if dot > 0 && !inShadow {
+                let spec = pow(dot, 20) * material.specularCoefficient
+                result = result + lightColor * spec
+            }
         }
         return result
     }
