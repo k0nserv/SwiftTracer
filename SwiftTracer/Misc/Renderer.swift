@@ -12,6 +12,13 @@ protocol RendererDelegate {
     func didFinishRendering(pixels: [Color], duration: NSTimeInterval)
 }
 
+enum SuperSampling {
+    case Off
+    // Number of samples per dimensions
+    // Example: On(4) is 4x4, 4 samples for x and 4 for y
+    case On(UInt)
+}
+
 struct Renderer {
     private static let epsilon: Double = 1e-12
     let scene: Scene
@@ -19,14 +26,27 @@ struct Renderer {
     var camera: Camera
     var pixels: [Color]
     var delegate: RendererDelegate?
-    private var isRendering = false
+    var superSampling: SuperSampling {
+        didSet {
+            switch superSampling {
+            case .Off:
+                samplesPerPixel = 1
+            case .On(let samplesPerPixel):
+                self.samplesPerPixel = samplesPerPixel
+            }
+        }
+    }
     var startTime: NSDate = NSDate()
+    private var samplesPerPixel: UInt
+    private var isRendering = false
 
     init(scene: Scene, camera: Camera, depth: Int) {
         self.scene = scene
         self.camera = camera
         self.pixels = []
         self.depth = depth
+        self.superSampling = .Off
+        self.samplesPerPixel = 1
     }
 
     mutating func render() {
@@ -41,8 +61,14 @@ struct Renderer {
                     return
                 }
 
-                let ray = camera.createRay(x: x, y: y)
-                let color = traceRay(ray, depth: depth)
+                var colors: [Color] = Array(count: Int(samplesPerPixel*samplesPerPixel), repeatedValue: scene.clearColor)
+                for var xSample = UInt(0); xSample < samplesPerPixel; ++xSample {
+                    for var ySample = UInt(0); ySample < samplesPerPixel; ++ySample {
+                        let ray = camera.createRay(x: x, y: y, xSample: xSample, ySample: ySample, samplesPerPixel: samplesPerPixel)
+                        colors[Int(ySample * samplesPerPixel + xSample)] = traceRay(ray, depth: depth)
+                    }
+                }
+
                 let index = (camera.height - 1 - y) * camera.width + x
                 if index > result.count {
                     // HACK: When isRendering is turned off in another
@@ -53,7 +79,19 @@ struct Renderer {
                     // midway and doing rendering in the background
                     return
                 }
-                result[index] = color
+                var avgR = 0.0
+                var avgG = 0.0
+                var avgB = 0.0
+
+                for c in colors {
+                    avgR += c.rd
+                    avgG += c.gd
+                    avgB += c.bd
+                }
+
+                result[index] = Color(r: avgR / Double(colors.count),
+                                      g: avgG / Double(colors.count),
+                                      b: avgB / Double(colors.count))
             }
         }
 
@@ -72,7 +110,7 @@ struct Renderer {
 
     private mutating func traceRay(ray: Ray, depth: Int) -> Color {
         if depth == 0 {
-            return Color(r: 0.0, g: 0.0, b: 0.0)
+            return Color.Black
         }
 
         var result = scene.clearColor

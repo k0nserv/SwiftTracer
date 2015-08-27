@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let height = Int(contentView.frame.size.height)
             let camera = Camera(fov: 1.04719755, width: width, height: height)
             mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera, depth: 5))
+            // This is veeeeery slow
+            //            mainController?.renderer?.superSampling = .On(8)
             window.delegate = mainController
 
             window.contentView?.addSubview(mainController!.view)
@@ -51,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         refractionCoefficient: nil)
         let leftWall = Plane(position: Vector(x: -7.0, y: 0.0, z: 0.0), normal: Vector(x: 1.0, y: 0.0, z: 0.0), material: leftWallMaterial)
 
-        let backWallMaterial = Material(color: Color(r: 0.0, g: 0.0, b: 0.0),
+        let backWallMaterial = Material(color: Color.Black,
                        ambientCoefficient: 0.0,
                        diffuseCoefficient: 0.0,
                       specularCoefficient: 0.0,
@@ -68,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             refractionCoefficient: nil)
         let rightWall = Plane(position: Vector(x: 7.0, y: 0.0, z: 0.0), normal: Vector(x: -1.0, y: 0.0, z: 0.0), material: rightWallMaterial)
 
-        let reflectiveMaterial = Material(color: Color(r: 0.0, g: 0.0, b: 0.0),
+        let reflectiveMaterial = Material(color: Color.Black,
                              ambientCoefficient: 0.6,
                              diffuseCoefficient: 0.3,
                             specularCoefficient: 0.4,
@@ -89,7 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let light = PointLight(color: Color(r: 1.0, g: 1.0, b: 1.0), position: Vector(x: 0, y: 10, z: 8), intensity: 0.6)
 
-        return Scene(objects: [floor, roof, frontWall, leftWall, rightWall, backWall, s1, s2, s3], lights: [light], clearColor: Color(r: 0.0, g: 0.0, b: 0.0))
+        return Scene(objects: [floor, roof, frontWall, leftWall, rightWall, backWall, s1, s2, s3], lights: [light], clearColor: Color.Black)
     }
 }
 

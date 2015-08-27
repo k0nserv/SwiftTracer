@@ -11,6 +11,8 @@ import Foundation
 typealias Color = UInt32
 
 extension Color {
+    static let Black = Color(r: 0.0, g: 0.0, b: 0.0)
+
     var r: UInt8 {
         get {
             return UInt8((self & 0x000000FF) >> 0x00000000)
