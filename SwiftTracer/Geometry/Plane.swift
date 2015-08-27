@@ -23,14 +23,14 @@ class Plane {
 
 extension Plane : Shape {
     func intersectWithRay(ray: Ray) -> Intersection? {
-        let denominator = (ray.direction.dot(normal))
-        if denominator == 0 {
+        let denominator = normal.dot(ray.direction)
+        if abs(denominator) < 1e-5 {
             return nil
         }
 
         let t = (position - ray.origin).dot(normal) / denominator
 
-        if t > 0 {
+        if t >= 1e-5 {
             let intersectionPoint = ray.origin + ray.direction * t
             return Intersection(t: t, point: intersectionPoint, normal: normal, shape: self)
         }
