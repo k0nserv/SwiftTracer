@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let contentView = window.contentView {
             let width = Int(contentView.frame.size.width)
             let height = Int(contentView.frame.size.height)
-            let camera = Camera(fov: 0.785398163, width: width, height: height)
+            let camera = Camera(fov: 1.04719755, width: width, height: height)
             mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera, depth: 5))
             window.delegate = mainController
 
