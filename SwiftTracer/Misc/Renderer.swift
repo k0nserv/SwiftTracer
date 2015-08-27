@@ -43,7 +43,17 @@ struct Renderer {
 
                 let ray = camera.createRay(x: x, y: y)
                 let color = traceRay(ray, depth: depth)
-                result[(camera.height - 1 - y) * camera.width + x] = color
+                let index = (camera.height - 1 - y) * camera.width + x
+                if index > result.count {
+                    // HACK: When isRendering is turned off in another
+                    // thread the next line might still cause an index out of bounds
+                    // error. This fixes the problem slightly, but it's a
+                    // horrible solution.
+                    // TODO: Think of a better way to deal with interupting rendering
+                    // midway and doing rendering in the background
+                    return
+                }
+                result[index] = color
             }
         }
 
