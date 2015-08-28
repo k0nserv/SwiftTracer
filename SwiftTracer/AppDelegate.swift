@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let width = Int(contentView.frame.size.width)
             let height = Int(contentView.frame.size.height)
             let camera = Camera(fov: 1.04719755, width: width, height: height)
-            mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera, depth: 5))
+            mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera, maxDepth: 5))
             // This is veeeeery slow
             //            mainController?.renderer?.superSampling = .On(8)
             window.delegate = mainController

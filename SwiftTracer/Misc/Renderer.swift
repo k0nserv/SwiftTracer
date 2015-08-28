@@ -22,7 +22,7 @@ enum SuperSampling {
 struct Renderer {
     private static let epsilon: Double = 1e-12
     let scene: Scene
-    let depth: Int
+    let maxDepth: Int
     var camera: Camera
     var pixels: [Color]
     var delegate: RendererDelegate?
@@ -40,11 +40,11 @@ struct Renderer {
     private var samplesPerPixel: UInt
     private var isRendering = false
 
-    init(scene: Scene, camera: Camera, depth: Int) {
+    init(scene: Scene, camera: Camera, maxDepth: Int) {
         self.scene = scene
         self.camera = camera
         self.pixels = []
-        self.depth = depth
+        self.maxDepth = maxDepth
         self.superSampling = .Off
         self.samplesPerPixel = 1
     }
@@ -65,7 +65,7 @@ struct Renderer {
                 for var xSample = UInt(0); xSample < samplesPerPixel; ++xSample {
                     for var ySample = UInt(0); ySample < samplesPerPixel; ++ySample {
                         let ray = camera.createRay(x: x, y: y, xSample: xSample, ySample: ySample, samplesPerPixel: samplesPerPixel)
-                        colors[Int(ySample * samplesPerPixel + xSample)] = traceRay(ray, depth: depth)
+                        colors[Int(ySample * samplesPerPixel + xSample)] = traceRay(ray, depth: maxDepth)
                     }
                 }
 
@@ -129,34 +129,11 @@ struct Renderer {
         if let hit = closestHit {
             result = shade(hit, originalRay: ray)
             if hit.shape.material.isReflective {
-                let newDirection = ray.direction.reflect(hit.normal).normalize()
-                let newRay = Ray(origin: hit.point + hit.point * newDirection * Renderer.epsilon,
-                              direction: newDirection)
-                let reflectiveColor = traceRay(newRay, depth: depth - 1)
-                result = result + reflectiveColor * hit.shape.material.reflectionCoefficient
+                result = result + calculateReflection(hit, originalRay: ray, currentDepth: depth)
             }
 
-            if var refractionCoefficient = hit.shape.material.refractionCoefficient {
-                if hit.inside { // Leaving refractive material
-                    refractionCoefficient = 1.0
-                }
-                let n = ray.mediumRefractionIndex / refractionCoefficient
-                var N = hit.normal
-                if hit.inside {
-                    N = -N
-                }
-                let cosI = (N.dot(ray.direction))
-                let c2 = 1.0 - n * n * (1.0 - cosI * cosI)
-                if c2 > 0.0 {
-                    let T = (ray.direction * n + N * (n * cosI - sqrt(c2))).normalize()
-                    let newRay = Ray(origin: hit.point + hit.point * T * Renderer.epsilon,
-                                  direction: T,
-                      mediumRefractionIndex: refractionCoefficient)
-                    let refractionColor = traceRay(newRay, depth: depth - 1)
-                    let absorbance = hit.shape.material.color * 0.15 * -hit.t
-                    let transparency = Color(r: exp(absorbance.rd), g: exp(absorbance.gd), b: exp(absorbance.bd))
-                    result = result + refractionColor * transparency
-                }
+            if let refractionCoefficient = hit.shape.material.refractionCoefficient {
+                result = result + calculateRefraction(refractionCoefficient, hit: hit, originalRay: ray, currentDepth: depth)
             }
         }
 
@@ -195,5 +172,39 @@ struct Renderer {
             }
         }
         return result
+    }
+
+    private mutating func calculateReflection(hit: Intersection, originalRay: Ray, currentDepth: Int) -> Color {
+        let newDirection = originalRay.direction.reflect(hit.normal).normalize()
+        let newRay = Ray(origin: hit.point + hit.point * newDirection * Renderer.epsilon,
+            direction: newDirection)
+        let reflectiveColor = traceRay(newRay, depth: currentDepth - 1)
+        return reflectiveColor * hit.shape.material.reflectionCoefficient
+    }
+
+    private mutating func calculateRefraction(refractionCoefficient: Double, hit: Intersection, originalRay: Ray, currentDepth: Int) -> Color {
+        var rCoeff = refractionCoefficient
+        if hit.inside { // Leaving refractive material
+            rCoeff = 1.0
+        }
+        let n = originalRay.mediumRefractionIndex / rCoeff
+        var N = hit.normal
+        if hit.inside {
+            N = -N
+        }
+        let cosI = (N.dot(originalRay.direction))
+        let c2 = 1.0 - n * n * (1.0 - cosI * cosI)
+        if c2 > 0.0 {
+            let T = (originalRay.direction * n + N * (n * cosI - sqrt(c2))).normalize()
+            let newRay = Ray(origin: hit.point + hit.point * T * Renderer.epsilon,
+                direction: T,
+                mediumRefractionIndex: rCoeff)
+            let refractionColor = traceRay(newRay, depth: currentDepth - 1)
+            let absorbance = hit.shape.material.color * 0.15 * -hit.t
+            let transparency = Color(r: exp(absorbance.rd), g: exp(absorbance.gd), b: exp(absorbance.bd))
+            return refractionColor * transparency
+        }
+
+        return Color.Black
     }
 }
