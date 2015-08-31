@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D62F7CF41B84AFEA0046308E /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F7CF31B84AFEA0046308E /* ColorTests.swift */; };
 		D64F04AF1B9481D700E4B4BE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64F04AE1B9481D700E4B4BE /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D6591DFA1B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6591DF91B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib */; };
+		D64F04B51B9482B500E4B4BE /* SwiftTracer.MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D64F04B41B9482B500E4B4BE /* SwiftTracer.MainViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		D65F16E41B77B5D200866F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F16E31B77B5D200866F61 /* AppDelegate.swift */; };
 		D65F16E61B77B5D200866F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E51B77B5D200866F61 /* Assets.xcassets */; };
 		D65F16E91B77B5D200866F61 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E71B77B5D200866F61 /* MainMenu.xib */; };
@@ -44,7 +44,7 @@
 /* Begin PBXFileReference section */
 		D62F7CF31B84AFEA0046308E /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		D64F04AE1B9481D700E4B4BE /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		D6591DF91B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwiftTracer.MainViewController.xib; sourceTree = "<group>"; };
+		D64F04B41B9482B500E4B4BE /* SwiftTracer.MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwiftTracer.MainViewController.xib; sourceTree = "<group>"; };
 		D65F16E01B77B5D200866F61 /* SwiftTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F16E31B77B5D200866F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D65F16E51B77B5D200866F61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,10 +112,17 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		D64F04B31B94829C00E4B4BE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D64F04B41B9482B500E4B4BE /* SwiftTracer.MainViewController.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		D65F16D71B77B5D200866F61 = {
 			isa = PBXGroup;
 			children = (
-				D6591DF91B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib */,
 				D65F16E21B77B5D200866F61 /* SwiftTracer */,
 				D65F16F21B77B5D200866F61 /* SwiftTracerTests */,
 				D65F16E11B77B5D200866F61 /* Products */,
@@ -134,6 +141,7 @@
 		D65F16E21B77B5D200866F61 /* SwiftTracer */ = {
 			isa = PBXGroup;
 			children = (
+				D64F04B31B94829C00E4B4BE /* UI */,
 				D64F04AA1B94819D00E4B4BE /* Controllers */,
 				D65F17241B77F96A00866F61 /* Lights */,
 				D65F17171B77D08200866F61 /* Views */,
@@ -304,9 +312,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6591DFA1B7E0E1C00D1368F /* SwiftTracer.MainViewController.xib in Resources */,
 				D65F16E61B77B5D200866F61 /* Assets.xcassets in Resources */,
 				D65F16E91B77B5D200866F61 /* MainMenu.xib in Resources */,
+				D64F04B51B9482B500E4B4BE /* SwiftTracer.MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
