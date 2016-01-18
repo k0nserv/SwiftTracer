@@ -10,6 +10,7 @@
 		D62F7CF41B84AFEA0046308E /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F7CF31B84AFEA0046308E /* ColorTests.swift */; };
 		D64F04AF1B9481D700E4B4BE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64F04AE1B9481D700E4B4BE /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D64F04B51B9482B500E4B4BE /* SwiftTracer.MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D64F04B41B9482B500E4B4BE /* SwiftTracer.MainViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		D65A34511B94AD64008EBCA8 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65A34501B94AD64008EBCA8 /* Box.swift */; };
 		D65F16E41B77B5D200866F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65F16E31B77B5D200866F61 /* AppDelegate.swift */; };
 		D65F16E61B77B5D200866F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E51B77B5D200866F61 /* Assets.xcassets */; };
 		D65F16E91B77B5D200866F61 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65F16E71B77B5D200866F61 /* MainMenu.xib */; };
@@ -45,6 +46,7 @@
 		D62F7CF31B84AFEA0046308E /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		D64F04AE1B9481D700E4B4BE /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D64F04B41B9482B500E4B4BE /* SwiftTracer.MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwiftTracer.MainViewController.xib; sourceTree = "<group>"; };
+		D65A34501B94AD64008EBCA8 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		D65F16E01B77B5D200866F61 /* SwiftTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F16E31B77B5D200866F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D65F16E51B77B5D200866F61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				D65F16FF1B77B69000866F61 /* Sphere.swift */,
 				D65F17041B77B6EF00866F61 /* Shape.swift */,
 				D65F17271B7800D600866F61 /* Plane.swift */,
+				D65A34501B94AD64008EBCA8 /* Box.swift */,
 			);
 			path = Geometry;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 		D65F16D81B77B5D200866F61 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Hugo Tunius";
 				TargetAttributes = {
@@ -344,6 +348,7 @@
 				D64F04AF1B9481D700E4B4BE /* MainViewController.swift in Sources */,
 				D65F17081B77B76700866F61 /* Ray.swift in Sources */,
 				D65F171B1B77D41400866F61 /* Renderer.swift in Sources */,
+				D65A34511B94AD64008EBCA8 /* Box.swift in Sources */,
 				D65F17211B77E7C800866F61 /* Camera.swift in Sources */,
 				D65F17281B7800D600866F61 /* Plane.swift in Sources */,
 				D65F171D1B77D7B800866F61 /* Scene.swift in Sources */,
