@@ -19,4 +19,21 @@ class Scene {
         self.lights = lights
         self.clearColor = clearColor
     }
+
+
+    func intersect(ray: Ray) -> Intersection? {
+        var closestHit: Intersection?
+
+        for object: Shape in objects {
+            if let hit = object.intersectWithRay(ray) {
+                if  let previousHit = closestHit where hit.t < previousHit.t  {
+                    closestHit = hit
+                } else if closestHit == nil {
+                    closestHit = hit
+                }
+            }
+        }
+
+        return closestHit
+    }
 }

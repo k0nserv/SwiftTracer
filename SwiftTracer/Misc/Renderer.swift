@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Darwin
 
 protocol RendererDelegate {
     func didFinishRendering(pixels: [Color], duration: NSTimeInterval)
@@ -114,17 +115,7 @@ struct Renderer {
         }
 
         var result = scene.clearColor
-        var closestHit: Intersection?
-
-        for object: Shape in scene.objects {
-            if let hit = object.intersectWithRay(ray) {
-                if  let previousHit = closestHit where hit.t < previousHit.t  {
-                    closestHit = hit
-                } else if closestHit == nil {
-                    closestHit = hit
-                }
-            }
-        }
+        let closestHit = scene.intersect(ray)
 
         if let hit = closestHit {
             result = shade(hit, originalRay: ray)
