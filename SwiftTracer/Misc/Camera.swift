@@ -38,6 +38,10 @@ struct Camera {
         return Ray(origin: Vector(x: 0, y: 0, z: 0), direction: direction.normalize())
     }
 
+    func createRay(x x: Int, y: Int) -> Ray{
+        return createRay(x: x, y: y, xSample: 0, ySample: 0, samplesPerPixel: 1)
+    }
+
     func cameraWithNewResolution(newWidth newWidth: Int, newHeight: Int) -> Camera {
         return Camera(fov: self.fov, width: newWidth, height: newHeight)
     }
