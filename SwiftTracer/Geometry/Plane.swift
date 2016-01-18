@@ -32,7 +32,7 @@ extension Plane : Shape {
 
         if t >= 1e-5 {
             let intersectionPoint = ray.origin + ray.direction * t
-            return Intersection(t: t, point: intersectionPoint, normal: normal, shape: self, inside: false)
+            return Intersection(t: t, point: intersectionPoint, normal: normal, shape: self)
         }
 
         return nil
