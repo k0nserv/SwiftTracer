@@ -9,7 +9,7 @@
 import Cocoa
 
 class MainViewController: NSViewController {
-    var materialEditWindow: NSWindowController?
+    var materialEditWindow: EditMaterialWindowController?
     var renderer: Renderer?
     @IBOutlet weak var pixelView: PixelRenderView!
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
@@ -95,9 +95,22 @@ extension MainViewController : PixelRenderViewDelegate {
             return
         }
 
-        materialEditWindow = NSWindowController(windowNibName: "EditMaterialWindow")
+        materialEditWindow = EditMaterialWindowController(material: intersection.shape.material)
         materialEditWindow!.showWindow(self)
         view.window?.makeKeyAndOrderFront(materialEditWindow!.window)
         materialEditWindow!.window?.makeKeyWindow()
+        materialEditWindow!.delegate = self
+    }
+}
+
+extension MainViewController: EditMaterialWindowControllerDelegate {
+    func editWindowWillClose() {
+        renderer!.abortRendering()
+        startRendering()
+    }
+
+    func renderSceneRequest() {
+        renderer!.abortRendering()
+        startRendering()
     }
 }

@@ -8,12 +8,17 @@
 
 import Cocoa
 
+protocol PixelRenderViewDelegate: class {
+    func rightMouseClickedAt(x x: CGFloat, y: CGFloat, event: NSEvent)
+}
+
 class PixelRenderView: NSView {
     var pixels: [Color] = [] {
         didSet {
             rawPixels = UnsafeMutablePointer<UInt8>(pixels)
         }
     }
+    weak var delegate: PixelRenderViewDelegate?
     private var rawPixels: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>()
 
     override func drawRect(dirtyRect: NSRect) {
@@ -37,5 +42,16 @@ class PixelRenderView: NSView {
         }
 
         r.drawInRect(dirtyRect)
-    }    
+    }
+
+    override func rightMouseUp(theEvent: NSEvent) {
+        guard let d = delegate else {
+            return
+        }
+
+        let location = theEvent.locationInWindow
+        let center = convertPoint(location, fromView: nil)
+
+        d.rightMouseClickedAt(x: center.x, y: center.y, event: theEvent)
+    }
 }
