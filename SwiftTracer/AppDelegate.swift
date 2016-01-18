@@ -18,10 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let contentView = window.contentView {
             let width = Int(contentView.frame.size.width)
             let height = Int(contentView.frame.size.height)
-            let camera = Camera(fov: 1.04719755, width: width, height: height)
+            let camera = Camera(fov: 0.785398163, width: width, height: height)
             mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera, maxDepth: 5))
             // This is veeeeery slow
-            //            mainController?.renderer?.superSampling = .On(8)
+//            mainController?.renderer?.superSampling = .On(2)
             window.delegate = mainController
 
             window.contentView?.addSubview(mainController!.view)
@@ -36,38 +36,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func buildScene() -> Scene {
         let wallMaterial = Material(color: Color(r: 1.0, g: 1.0, b: 1.0),
                         ambientCoefficient: 0.6,
-                       diffuseCoefficient: 0.3,
-                      specularCoefficient: 0.0,
-                    reflectionCoefficient: 0.0,
-                    refractionCoefficient: nil)
-        let floor = Plane(position: Vector(x: 0.0, y: -1.0, z: 0.0), normal: Vector(x: 0.0, y: 1.0, z: 0.0), material: wallMaterial)
-        let frontWall = Plane(position: Vector(x: 0.0, y: 0.0, z: 50.0), normal: Vector(x: 0.0, y: 0.0, z: -1.0), material: wallMaterial)
-        let roof = Plane(position: Vector(x: 0.0, y: 15.0, z: 0.0), normal: Vector(x: 0.0, y: -1.0, z: 0.0), material: wallMaterial)
+                       diffuseCoefficient: 0.3)
+        let floor = Plane(position: Vector(x: 0.0, y: -1.0, z: 0.0), normal: Vector(x: 0.0, y: 1.0, z: 0.0), material: wallMaterial.copy())
+        let frontWall = Plane(position: Vector(x: 0.0, y: 0.0, z: 50.0), normal: Vector(x: 0.0, y: 0.0, z: -1.0), material: wallMaterial.copy())
+        let roof = Plane(position: Vector(x: 0.0, y: 15.0, z: 0.0), normal: Vector(x: 0.0, y: -1.0, z: 0.0), material: wallMaterial.copy())
 
         // rgb(7%, 32%, 57%)
         let leftWallMaterial = Material(color: Color(r: 0.07, g: 0.32, b: 0.57),
                            ambientCoefficient: 0.6,
-                           diffuseCoefficient: 0.3,
-                          specularCoefficient: 0.0,
-                        reflectionCoefficient: 0.0,
-                        refractionCoefficient: nil)
+                           diffuseCoefficient: 0.3)
         let leftWall = Plane(position: Vector(x: -7.0, y: 0.0, z: 0.0), normal: Vector(x: 1.0, y: 0.0, z: 0.0), material: leftWallMaterial)
 
         let backWallMaterial = Material(color: Color.Black,
                        ambientCoefficient: 0.0,
-                       diffuseCoefficient: 0.0,
-                      specularCoefficient: 0.0,
-                    reflectionCoefficient: 0.0,
-                    refractionCoefficient: nil)
+                       diffuseCoefficient: 0.0)
         let backWall = Plane(position: Vector(x: 0.0, y: 0.0, z: -1), normal: Vector(x: 0.0, y: 0.0, z: 1.0), material: backWallMaterial)
 
         // rgb(57%, 7%, 7%)
         let rightWallMaterial = Material(color: Color(r: 0.7, g: 0.32, b: 0.57),
             ambientCoefficient: 0.6,
-            diffuseCoefficient: 0.3,
-            specularCoefficient: 0.0,
-            reflectionCoefficient: 0.0,
-            refractionCoefficient: nil)
+            diffuseCoefficient: 0.3)
         let rightWall = Plane(position: Vector(x: 7.0, y: 0.0, z: 0.0), normal: Vector(x: -1.0, y: 0.0, z: 0.0), material: rightWallMaterial)
 
         let reflectiveMaterial = Material(color: Color.Black,
@@ -88,6 +76,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let greenMaterial = Material(color: Color(r: 0.1, g: 0.74, b: 0.23), ambientCoefficient: 0.5, diffuseCoefficient: 0.3, specularCoefficient: 0.0, reflectionCoefficient: 0.0, refractionCoefficient: nil)
         let s3 = Sphere(radius: 0.5, center: Vector(x: 0.0, y: 1.2, z: 12.0), material: greenMaterial)
+
+        let b1 = Box(min: Vector(x: 1.0, y: 0.0, z: 7.0), max: Vector(x: 1.3, y: 1.0, z: 8.0), material: wallMaterial.copy())
 
         let light = PointLight(color: Color(r: 1.0, g: 1.0, b: 1.0), position: Vector(x: 0, y: 10, z: 8), intensity: 0.6)
 
