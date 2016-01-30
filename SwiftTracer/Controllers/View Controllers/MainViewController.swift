@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftTracer_Core
 
 class MainViewController: NSViewController {
     var materialEditWindow: EditMaterialWindowController?

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftTracer_Core
 
 protocol EditMaterialWindowControllerDelegate: class {
     func editWindowWillClose()

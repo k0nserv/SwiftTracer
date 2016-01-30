@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftTracer_Core
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -19,9 +20,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let width = Int(contentView.frame.size.width)
             let height = Int(contentView.frame.size.height)
             let camera = Camera(fov: 0.785398163, width: width, height: height)
-            mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera, maxDepth: 5))
+            mainController = MainViewController(renderer: Renderer(scene: buildScene(), camera: camera, maxDepth: 20))
             // This is veeeeery slow
-//            mainController?.renderer?.superSampling = .On(2)
+            mainController?.renderer?.superSampling = .On(2)
             window.delegate = mainController
 
             window.contentView?.addSubview(mainController!.view)
@@ -76,8 +77,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let greenMaterial = Material(color: Color(r: 0.1, g: 0.74, b: 0.23), ambientCoefficient: 0.5, diffuseCoefficient: 0.3, specularCoefficient: 0.0, reflectionCoefficient: 0.0, refractionCoefficient: nil)
         let s3 = Sphere(radius: 0.5, center: Vector(x: 0.0, y: 1.2, z: 12.0), material: greenMaterial)
-
-        let b1 = Box(min: Vector(x: 1.0, y: 0.0, z: 7.0), max: Vector(x: 1.3, y: 1.0, z: 8.0), material: wallMaterial.copy())
 
         let light = PointLight(color: Color(r: 1.0, g: 1.0, b: 1.0), position: Vector(x: 0, y: 10, z: 8), intensity: 0.6)
 

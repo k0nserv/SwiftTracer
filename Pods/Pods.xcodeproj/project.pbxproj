@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0412BE67F84D56AEF519D9C73A591BE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A458559A01A2C6FFB542D9F6DD5242D0 /* Renderer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		191C11F44BFC467A86A7303EDEDCB617 /* Pods-SwiftTracer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 605A5331794F7D4445C2C31996EBD0A2 /* Pods-SwiftTracer-dummy.m */; };
+		1D2D5BCC922F9CD61ECF178DC0EC05D7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41198EC0C41983EBDD662B9617E7C708 /* Scene.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2EB9CA17FCE3ED552FEEB6271C5163AD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A2BF48ACE9466BE25B61BF69646182 /* Color.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2F253BE3588422AA80260468FB64A10F /* SwiftTracer-Core-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A2C76C6CED5E0B5BB1FA45DDD980C0 /* SwiftTracer-Core-dummy.m */; };
+		4C47DB9AA4BBD25AFF3FD39914DD5842 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3D3AB85B6630A128B3D24D311B5F1 /* Ray.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6B46A5F143A5196927F86612EA2DAECB /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D18B9CE16D22896D515A8ACC07131 /* Sphere.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		74EB9807D3CB3C49154D2709BA331739 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105EB5F6CFC19A8D7F2FBC79EA67B1F4 /* Cocoa.framework */; };
+		79CDF42C8C5EB0A760909BDE3F8431FA /* Pods-SwiftTracer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 387ED4D0BD95C4A9900A96646C4C7ECD /* Pods-SwiftTracer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95B1D932C361D1FDAA66BBA8778FFEB6 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBE2E12749E831AC4E580A118210EB4 /* Shape.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		99180EB1ACC4C17689ADC9857FE46B7F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105EB5F6CFC19A8D7F2FBC79EA67B1F4 /* Cocoa.framework */; };
+		99A2C1DE412F1559A8D655D6224FF845 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0412549D348794738E4D8ECC9187E0 /* Plane.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		ADA06CB34BB10588A2E7E145A4A5A57E /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7C8DBDDA35E68F9199F7EF3FCD744 /* Intersection.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		AF13766EAEF40DA1482B30FB5A4B5180 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4859F2F027BEB5919D4FA77032292 /* Box.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DB5AEBA28DD830EF8F906C616DD01915 /* PointLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530331B0DCF08BA226112A53B862E559 /* PointLight.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DE869166C4A424DD527830CBD3886251 /* SwiftTracer-Core-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F46E0FE2C439136160965B23222FBDFB /* SwiftTracer-Core-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0AE8E82C55ECAD7740E0A1E8064B6E2 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7002F6DF2B400CAC8B5F9C7ABA1FB39 /* Material.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EDF1B43EEF00768B53EF719E3A59E87C /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79565798D0FF449928AF4479C82C055 /* Camera.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F9FC06ADB54DD2750D33891A56F3E543 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9341EABACDAAA7EE24A25E2143C6127 /* Vector.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00D7C1DD57233767EF523EB68E6F5277 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72C83FE4EF3495485C5B3FEA0D0CD73E;
+			remoteInfo = "SwiftTracer-Core";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		105EB5F6CFC19A8D7F2FBC79EA67B1F4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		1AB7C8DBDDA35E68F9199F7EF3FCD744 /* Intersection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Intersection.swift; path = Sources/Misc/Intersection.swift; sourceTree = "<group>"; };
+		1D3E46C66450BE302D8BBDED9A073936 /* Pods-SwiftTracer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftTracer.debug.xcconfig"; sourceTree = "<group>"; };
+		24417B4047FCB4803B533FAD410B526B /* Pods-SwiftTracer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftTracer.modulemap"; sourceTree = "<group>"; };
+		29A2C76C6CED5E0B5BB1FA45DDD980C0 /* SwiftTracer-Core-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftTracer-Core-dummy.m"; sourceTree = "<group>"; };
+		2BFF46340D81D218A493F6A5AA6FA71F /* Pods-SwiftTracer-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftTracer-frameworks.sh"; sourceTree = "<group>"; };
+		387ED4D0BD95C4A9900A96646C4C7ECD /* Pods-SwiftTracer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftTracer-umbrella.h"; sourceTree = "<group>"; };
+		39F43385C9B45BF4637E71E028B763BB /* Pods-SwiftTracer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftTracer.release.xcconfig"; sourceTree = "<group>"; };
+		41198EC0C41983EBDD662B9617E7C708 /* Scene.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scene.swift; path = Sources/Misc/Scene.swift; sourceTree = "<group>"; };
+		530331B0DCF08BA226112A53B862E559 /* PointLight.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PointLight.swift; path = Sources/Lights/PointLight.swift; sourceTree = "<group>"; };
+		54ED6975A84FFAF221C367586A75AC3C /* SwiftTracer-Core-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftTracer-Core-Private.xcconfig"; sourceTree = "<group>"; };
+		605A5331794F7D4445C2C31996EBD0A2 /* Pods-SwiftTracer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftTracer-dummy.m"; sourceTree = "<group>"; };
+		69DCB8570A5EADEC77A998965DDB66A2 /* Pods-SwiftTracer-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftTracer-acknowledgements.plist"; sourceTree = "<group>"; };
+		6D04A53A9FAFE8BA267D995C010C1BD3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71A2BF48ACE9466BE25B61BF69646182 /* Color.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Sources/Misc/Color.swift; sourceTree = "<group>"; };
+		74E1C215791F77C3F0C8C87CAE3A37DD /* SwiftTracer_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftTracer_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AA6FEA76FA0A3946C34DA4FB35B072E /* SwiftTracer-Core.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftTracer-Core.xcconfig"; sourceTree = "<group>"; };
+		8883D8FBBE3E4FC56C3D296D4AD420DD /* SwiftTracer-Core-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftTracer-Core-prefix.pch"; sourceTree = "<group>"; };
+		90C5165436D3128562E7ED13421A6C6D /* Pods_SwiftTracer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTracer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98D3D3AB85B6630A128B3D24D311B5F1 /* Ray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Ray.swift; path = Sources/Misc/Ray.swift; sourceTree = "<group>"; };
+		9BBE2E12749E831AC4E580A118210EB4 /* Shape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Shape.swift; path = Sources/Geometry/Shape.swift; sourceTree = "<group>"; };
+		A3C65BC77BBA869CD874AA09574971F8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A458559A01A2C6FFB542D9F6DD5242D0 /* Renderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = Sources/Misc/Renderer.swift; sourceTree = "<group>"; };
+		A79565798D0FF449928AF4479C82C055 /* Camera.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = Sources/Misc/Camera.swift; sourceTree = "<group>"; };
+		A7F226395F52B445D7EEAFA3D4AF16A0 /* Pods-SwiftTracer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftTracer-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BF0412549D348794738E4D8ECC9187E0 /* Plane.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Plane.swift; path = Sources/Geometry/Plane.swift; sourceTree = "<group>"; };
+		C9341EABACDAAA7EE24A25E2143C6127 /* Vector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vector.swift; path = Sources/Math/Vector.swift; sourceTree = "<group>"; };
+		C9877A99AFFB436E907E99BE65E3B0D4 /* Pods-SwiftTracer-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftTracer-resources.sh"; sourceTree = "<group>"; };
+		CD7D18B9CE16D22896D515A8ACC07131 /* Sphere.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sphere.swift; path = Sources/Geometry/Sphere.swift; sourceTree = "<group>"; };
+		D7002F6DF2B400CAC8B5F9C7ABA1FB39 /* Material.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Material.swift; path = Sources/Misc/Material.swift; sourceTree = "<group>"; };
+		D80747AC508FEBADE627A24C7231C369 /* SwiftTracer-Core.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "SwiftTracer-Core.modulemap"; sourceTree = "<group>"; };
+		E7A4859F2F027BEB5919D4FA77032292 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Geometry/Box.swift; sourceTree = "<group>"; };
+		F46E0FE2C439136160965B23222FBDFB /* SwiftTracer-Core-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftTracer-Core-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		013E4B1110B49D54A6F1874212BDDCB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99180EB1ACC4C17689ADC9857FE46B7F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBA9C3B26A96FF0E133D2EFAAE1D65AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74EB9807D3CB3C49154D2709BA331739 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22674FB28843A90D87B73AD65EC70B3A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A3C65BC77BBA869CD874AA09574971F8 /* Info.plist */,
+				D80747AC508FEBADE627A24C7231C369 /* SwiftTracer-Core.modulemap */,
+				7AA6FEA76FA0A3946C34DA4FB35B072E /* SwiftTracer-Core.xcconfig */,
+				54ED6975A84FFAF221C367586A75AC3C /* SwiftTracer-Core-Private.xcconfig */,
+				29A2C76C6CED5E0B5BB1FA45DDD980C0 /* SwiftTracer-Core-dummy.m */,
+				8883D8FBBE3E4FC56C3D296D4AD420DD /* SwiftTracer-Core-prefix.pch */,
+				F46E0FE2C439136160965B23222FBDFB /* SwiftTracer-Core-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftTracer-Core";
+			sourceTree = "<group>";
+		};
+		2BCCF9E7DC08FAEC719B6A6C0F7D57AD /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				105EB5F6CFC19A8D7F2FBC79EA67B1F4 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BCCF9E7DC08FAEC719B6A6C0F7D57AD /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D2D07F40EAC42CC8B5E531B141E8DEA /* SwiftTracer-Core */ = {
+			isa = PBXGroup;
+			children = (
+				E7A4859F2F027BEB5919D4FA77032292 /* Box.swift */,
+				A79565798D0FF449928AF4479C82C055 /* Camera.swift */,
+				71A2BF48ACE9466BE25B61BF69646182 /* Color.swift */,
+				1AB7C8DBDDA35E68F9199F7EF3FCD744 /* Intersection.swift */,
+				D7002F6DF2B400CAC8B5F9C7ABA1FB39 /* Material.swift */,
+				BF0412549D348794738E4D8ECC9187E0 /* Plane.swift */,
+				530331B0DCF08BA226112A53B862E559 /* PointLight.swift */,
+				98D3D3AB85B6630A128B3D24D311B5F1 /* Ray.swift */,
+				A458559A01A2C6FFB542D9F6DD5242D0 /* Renderer.swift */,
+				41198EC0C41983EBDD662B9617E7C708 /* Scene.swift */,
+				9BBE2E12749E831AC4E580A118210EB4 /* Shape.swift */,
+				CD7D18B9CE16D22896D515A8ACC07131 /* Sphere.swift */,
+				C9341EABACDAAA7EE24A25E2143C6127 /* Vector.swift */,
+				22674FB28843A90D87B73AD65EC70B3A /* Support Files */,
+			);
+			path = "SwiftTracer-Core";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */,
+				D615CAE7CA51FC71CC1E410ACC13236F /* Pods */,
+				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
+				AE9DE4F7E2D72417C802A6D5A459FEF3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A6E7CDF887899BB9D3BA5EBBB9CA2A93 /* Pods-SwiftTracer */ = {
+			isa = PBXGroup;
+			children = (
+				6D04A53A9FAFE8BA267D995C010C1BD3 /* Info.plist */,
+				24417B4047FCB4803B533FAD410B526B /* Pods-SwiftTracer.modulemap */,
+				A7F226395F52B445D7EEAFA3D4AF16A0 /* Pods-SwiftTracer-acknowledgements.markdown */,
+				69DCB8570A5EADEC77A998965DDB66A2 /* Pods-SwiftTracer-acknowledgements.plist */,
+				605A5331794F7D4445C2C31996EBD0A2 /* Pods-SwiftTracer-dummy.m */,
+				2BFF46340D81D218A493F6A5AA6FA71F /* Pods-SwiftTracer-frameworks.sh */,
+				C9877A99AFFB436E907E99BE65E3B0D4 /* Pods-SwiftTracer-resources.sh */,
+				387ED4D0BD95C4A9900A96646C4C7ECD /* Pods-SwiftTracer-umbrella.h */,
+				1D3E46C66450BE302D8BBDED9A073936 /* Pods-SwiftTracer.debug.xcconfig */,
+				39F43385C9B45BF4637E71E028B763BB /* Pods-SwiftTracer.release.xcconfig */,
+			);
+			name = "Pods-SwiftTracer";
+			path = "Target Support Files/Pods-SwiftTracer";
+			sourceTree = "<group>";
+		};
+		AE9DE4F7E2D72417C802A6D5A459FEF3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A6E7CDF887899BB9D3BA5EBBB9CA2A93 /* Pods-SwiftTracer */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				90C5165436D3128562E7ED13421A6C6D /* Pods_SwiftTracer.framework */,
+				74E1C215791F77C3F0C8C87CAE3A37DD /* SwiftTracer_Core.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D615CAE7CA51FC71CC1E410ACC13236F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D2D07F40EAC42CC8B5E531B141E8DEA /* SwiftTracer-Core */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3552581959F62F5FB127CD8A100C9E25 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE869166C4A424DD527830CBD3886251 /* SwiftTracer-Core-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7EF90F4B565559EDE725B50C092E7C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79CDF42C8C5EB0A760909BDE3F8431FA /* Pods-SwiftTracer-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		72C83FE4EF3495485C5B3FEA0D0CD73E /* SwiftTracer-Core */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18F8A94C4CE603AD2E37F1DD4A5F81DA /* Build configuration list for PBXNativeTarget "SwiftTracer-Core" */;
+			buildPhases = (
+				023D233219F525D615BD7C856BD8A7A2 /* Sources */,
+				BBA9C3B26A96FF0E133D2EFAAE1D65AE /* Frameworks */,
+				3552581959F62F5FB127CD8A100C9E25 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftTracer-Core";
+			productName = "SwiftTracer-Core";
+			productReference = 74E1C215791F77C3F0C8C87CAE3A37DD /* SwiftTracer_Core.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B2F444E54EC5A2F75EF874BC6B6E6ED4 /* Pods-SwiftTracer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C536F368838FBBB6E00D2AA475C844D /* Build configuration list for PBXNativeTarget "Pods-SwiftTracer" */;
+			buildPhases = (
+				49A6C847F7BEB32296072D455C87E98E /* Sources */,
+				013E4B1110B49D54A6F1874212BDDCB8 /* Frameworks */,
+				AA7EF90F4B565559EDE725B50C092E7C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FCC4F8BE58374BE81748A186CEEFB19 /* PBXTargetDependency */,
+			);
+			name = "Pods-SwiftTracer";
+			productName = "Pods-SwiftTracer";
+			productReference = 90C5165436D3128562E7ED13421A6C6D /* Pods_SwiftTracer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = CCA510CFBEA2D207524CDA0D73C3B561 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B2F444E54EC5A2F75EF874BC6B6E6ED4 /* Pods-SwiftTracer */,
+				72C83FE4EF3495485C5B3FEA0D0CD73E /* SwiftTracer-Core */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		023D233219F525D615BD7C856BD8A7A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF13766EAEF40DA1482B30FB5A4B5180 /* Box.swift in Sources */,
+				EDF1B43EEF00768B53EF719E3A59E87C /* Camera.swift in Sources */,
+				2EB9CA17FCE3ED552FEEB6271C5163AD /* Color.swift in Sources */,
+				ADA06CB34BB10588A2E7E145A4A5A57E /* Intersection.swift in Sources */,
+				E0AE8E82C55ECAD7740E0A1E8064B6E2 /* Material.swift in Sources */,
+				99A2C1DE412F1559A8D655D6224FF845 /* Plane.swift in Sources */,
+				DB5AEBA28DD830EF8F906C616DD01915 /* PointLight.swift in Sources */,
+				4C47DB9AA4BBD25AFF3FD39914DD5842 /* Ray.swift in Sources */,
+				0412BE67F84D56AEF519D9C73A591BE3 /* Renderer.swift in Sources */,
+				1D2D5BCC922F9CD61ECF178DC0EC05D7 /* Scene.swift in Sources */,
+				95B1D932C361D1FDAA66BBA8778FFEB6 /* Shape.swift in Sources */,
+				6B46A5F143A5196927F86612EA2DAECB /* Sphere.swift in Sources */,
+				2F253BE3588422AA80260468FB64A10F /* SwiftTracer-Core-dummy.m in Sources */,
+				F9FC06ADB54DD2750D33891A56F3E543 /* Vector.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49A6C847F7BEB32296072D455C87E98E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				191C11F44BFC467A86A7303EDEDCB617 /* Pods-SwiftTracer-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0FCC4F8BE58374BE81748A186CEEFB19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftTracer-Core";
+			target = 72C83FE4EF3495485C5B3FEA0D0CD73E /* SwiftTracer-Core */;
+			targetProxy = 00D7C1DD57233767EF523EB68E6F5277 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		17532D5161C1124C14DDEF6EE27B0D3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54ED6975A84FFAF221C367586A75AC3C /* SwiftTracer-Core-Private.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0.0.2;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.0.2;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftTracer-Core/SwiftTracer-Core-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftTracer-Core/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/SwiftTracer-Core/SwiftTracer-Core.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftTracer_Core;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1E621D6BF749EDCE77ACBE7C6D464E29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		2F831A85A9EFAECF785264F556D439E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39F43385C9B45BF4637E71E028B763BB /* Pods-SwiftTracer.release.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftTracer/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftTracer/Pods-SwiftTracer.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_SwiftTracer;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		39397A809534DAD8BF0806F12C3C62AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D3E46C66450BE302D8BBDED9A073936 /* Pods-SwiftTracer.debug.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftTracer/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftTracer/Pods-SwiftTracer.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_SwiftTracer;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5577A3F22A37686E40DB6863D68D476C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9BBC8DE8DD94B5D9980156B49C05D28F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54ED6975A84FFAF221C367586A75AC3C /* SwiftTracer-Core-Private.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0.0.2;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.0.2;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftTracer-Core/SwiftTracer-Core-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftTracer-Core/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/SwiftTracer-Core/SwiftTracer-Core.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftTracer_Core;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		18F8A94C4CE603AD2E37F1DD4A5F81DA /* Build configuration list for PBXNativeTarget "SwiftTracer-Core" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17532D5161C1124C14DDEF6EE27B0D3A /* Debug */,
+				9BBC8DE8DD94B5D9980156B49C05D28F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E621D6BF749EDCE77ACBE7C6D464E29 /* Debug */,
+				5577A3F22A37686E40DB6863D68D476C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C536F368838FBBB6E00D2AA475C844D /* Build configuration list for PBXNativeTarget "Pods-SwiftTracer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39397A809534DAD8BF0806F12C3C62AB /* Debug */,
+				2F831A85A9EFAECF785264F556D439E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

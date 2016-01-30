@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftTracer_Core
 
 protocol PixelRenderViewDelegate: class {
     func rightMouseClickedAt(x x: CGFloat, y: CGFloat, event: NSEvent)

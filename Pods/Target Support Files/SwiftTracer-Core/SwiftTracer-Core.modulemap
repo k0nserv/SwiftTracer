@@ -1,0 +1,6 @@
+framework module SwiftTracer_Core {
+  umbrella header "SwiftTracer-Core-umbrella.h"
+
+  export *
+  module * { export * }
+}

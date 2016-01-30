@@ -1,0 +1,10 @@
+PODS:
+  - SwiftTracer-Core (0.0.2)
+
+DEPENDENCIES:
+  - SwiftTracer-Core (~> 0.0.2)
+
+SPEC CHECKSUMS:
+  SwiftTracer-Core: 54dc69adfebdaf850cd83894782ab4473466e648
+
+COCOAPODS: 0.38.2
