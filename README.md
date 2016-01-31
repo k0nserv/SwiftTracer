@@ -1,14 +1,11 @@
 SwiftTracer
 ===========
 
-A Swift(Language not performance) Raytracer. Written for learning and lulz.
+A OSX frontend for the SwiftTracer project.
+Under the hood [SwitftTracer-Core](https://github.com/k0nserv/SwiftTracer-Core) is used for rendering.
 
 
 Renders
 -------
 
-##### No super sampling
-![](images/example.png)
-
-##### 8x8 super sampling
-![](images/example8x8.png)
+![](images/render-1.png)
